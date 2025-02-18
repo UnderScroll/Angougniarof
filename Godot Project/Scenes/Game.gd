@@ -28,4 +28,4 @@ func _on_do_pressed() -> void:
 	var diff = matcher.diff(img1, img2, img, $TextureRect.texture.get_width(), $TextureRect.texture.get_height())
 	print(diff)
 	$TextureRect2.texture = ImageTexture.create_from_image(img)
-	pass # Replace with function body.
+	printt($TextureRect.texture.get_width(), $TextureRect.texture.get_height())
