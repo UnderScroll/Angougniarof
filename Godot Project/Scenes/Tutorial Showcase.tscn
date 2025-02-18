@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cshx3o8dwk8k3"]
+[gd_scene load_steps=8 format=3 uid="uid://cshx3o8dwk8k3"]
 
 [ext_resource type="Script" path="res://Scenes/Game.gd" id="1_xlq2c"]
 [ext_resource type="Script" path="res://Scripts/GodotTCPServer.cs" id="3_jq21x"]
@@ -12,6 +12,8 @@ gradient = SubResource("Gradient_p0qj7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cl7vr"]
 shader = ExtResource("3_kk3rb")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_n1pah"]
 
 [node name="Visuals" type="Control"]
 layout_mode = 3
@@ -53,6 +55,7 @@ theme_override_font_sizes/font_size = 71
 text = "SET IMG 1"
 
 [node name="Button2" type="Button" parent="."]
+layout_mode = 0
 offset_left = 1210.0
 offset_top = 492.0
 offset_right = 1631.0
@@ -61,12 +64,21 @@ theme_override_font_sizes/font_size = 71
 text = "SET IMG 2"
 
 [node name="Do" type="Button" parent="."]
-offset_left = 1210.0
-offset_top = 492.0
-offset_right = 1631.0
-offset_bottom = 605.0
+layout_mode = 0
+offset_left = 1214.0
+offset_top = 642.0
+offset_right = 1635.0
+offset_bottom = 755.0
 theme_override_font_sizes/font_size = 71
-text = "SET IMG 2"
+text = "DO"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1088.0
+offset_top = 36.0
+offset_right = 1128.0
+offset_bottom = 76.0
+texture = SubResource("PlaceholderTexture2D_n1pah")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
