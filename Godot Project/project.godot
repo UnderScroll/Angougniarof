@@ -26,3 +26,7 @@ window/stretch/mode="canvas_items"
 [dotnet]
 
 project/assembly_name="Godot_And_Webcams - Exhibit 2"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.881937, 0.881937, 0.881937, 1)

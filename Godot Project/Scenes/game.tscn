@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl8c5yyv7fpro"]
+
+[ext_resource type="Shader" path="res://Shaders/grid.gdshader" id="1_ylkhj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jhfbi"]
+shader = ExtResource("1_ylkhj")
+shader_parameter/cell_x = 11.0
+shader_parameter/cell_y = 7.0
+shader_parameter/line_width = 12.0
+shader_parameter/pos_min = 0.4
+shader_parameter/pos_max = 0.6
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="ColorRect" parent="CanvasLayer"]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_jhfbi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
