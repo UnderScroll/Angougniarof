@@ -18,7 +18,7 @@ func exit_state():
 # ------------------------------------------------------------------------------ BASIC METHODS
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Progress/Bar.value = $Playtime.time_left
+	$Progress/HB/Bar.value = $Playtime.time_left
 
 # ------------------------------------------------------------------------------ CUSTOM METHODS
 ## Callled right before screenshot
