@@ -4,6 +4,7 @@ class_name GameStatePlay
 
 func enter_state():
 	show()
+	prepare_play()
 	$Playtime.start()
 
 func exit_state():
