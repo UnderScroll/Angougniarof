@@ -1,5 +1,6 @@
 shader_type canvas_item;
 
+uniform vec4 base_color : source_color;
 uniform float cell_x = 16;
 uniform float cell_y = 16;
 uniform float line_width = 0.5;
@@ -41,5 +42,5 @@ void fragment() {
 	color += vec3(line(p3,p4,line_width,grid,SCREEN_PIXEL_SIZE.x));
 	
 	COLOR = vec4(1.0-color,1.0);
-	
+	COLOR *= base_color;
 }

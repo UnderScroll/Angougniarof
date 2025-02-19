@@ -19,6 +19,7 @@ enum States {
 var ui_nodes : Array[GameState] = []
 
 func _ready() -> void:
+	
 	# Oui je sais c'est pas beau ici, mais en bas c'est clean
 	# c'est juste une for loop pour tout cacher
 	ui_nodes.append(start_node)
@@ -28,6 +29,7 @@ func _ready() -> void:
 	#ui_nodes.append(endscore_node)
 	for i in ui_nodes:
 		i.connect("change_state", set_state)
+	state = States.START
 
 
 
@@ -52,6 +54,7 @@ func state_play():
 func state_wait():
 	#hide_all() # will not work if previous state != PLAY
 	wait_node.enter_state()
+	
 func state_score():pass
 func state_endscore():pass
 

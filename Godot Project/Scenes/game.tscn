@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bl8c5yyv7fpro"]
+[gd_scene load_steps=31 format=3 uid="uid://bl8c5yyv7fpro"]
 
 [ext_resource type="Script" path="res://Scenes/MainScene.gd" id="1_2uhmy"]
 [ext_resource type="Theme" uid="uid://hs4d4pso4b6f" path="res://Assets/Theme.tres" id="1_shxs3"]
@@ -9,10 +9,8 @@
 [ext_resource type="Script" path="res://Scripts/state_play.gd" id="5_u4ljb"]
 [ext_resource type="Texture2D" uid="uid://d0ye41g3mvqsl" path="res://Assets/Textures/Shadow_squirel_tes.png" id="8_51fxb"]
 [ext_resource type="Script" path="res://Scripts/state_wait.gd" id="8_w5huq"]
-[ext_resource type="Texture2D" uid="uid://bxnk2r3s5f1kx" path="res://Assets/Textures/Background_PB.png" id="9_4en5d"]
 [ext_resource type="Script" path="res://Scripts/state_score.gd" id="9_cbwex"]
-[ext_resource type="Texture2D" uid="uid://by2y85pp40j6k" path="res://Assets/Textures/Over_PB.png" id="10_xldoj"]
-[ext_resource type="Texture2D" uid="uid://drogss8qog5ft" path="res://Assets/Textures/Fill_PB.png" id="11_depn5"]
+[ext_resource type="FontFile" uid="uid://bcfxo0uqq4vjw" path="res://Assets/Fonts/Monocode-Regular-V01.02b.ttf" id="9_oan2k"]
 
 [sub_resource type="Gradient" id="Gradient_8j4wn"]
 interpolation_mode = 2
@@ -24,11 +22,48 @@ fill_to = Vector2(0.825688, 0.582569)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jhfbi"]
 shader = ExtResource("1_ylkhj")
+shader_parameter/base_color = Color(0.736389, 0.742188, 0.742188, 1)
 shader_parameter/cell_x = 11.0
 shader_parameter/cell_y = 7.0
 shader_parameter/line_width = 12.0
 shader_parameter/pos_min = 0.48
 shader_parameter/pos_max = 0.6
+
+[sub_resource type="Gradient" id="Gradient_dwi64"]
+interpolation_mode = 1
+colors = PackedColorArray(0, 0, 0, 1, 0.93, 0.93, 0.93, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cyndm"]
+gradient = SubResource("Gradient_dwi64")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.854369, 0.184466)
+
+[sub_resource type="Gradient" id="Gradient_3t4to"]
+interpolation_mode = 1
+colors = PackedColorArray(0, 0.920904, 1, 1, 0.93, 0.93, 0.93, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n7qbm"]
+gradient = SubResource("Gradient_3t4to")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.854369, 0.184466)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8tye"]
+bg_color = Color(0, 0, 0, 1)
+skew = Vector2(0.5, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+shadow_color = Color(0.523438, 1, 1, 1)
+shadow_size = 10
+anti_aliasing = false
 
 [sub_resource type="Curve" id="Curve_gcpbk"]
 _data = [Vector2(0, 0.497135), 0.0, 0.0, 0, 0, Vector2(0.200704, 1), 0.0, 0.0, 0, 0, Vector2(0.746479, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -52,8 +87,9 @@ gravity = Vector3(0, 980, 0)
 scale_curve = SubResource("CurveTexture_4kcdp")
 
 [sub_resource type="Gradient" id="Gradient_5p37h"]
-offsets = PackedFloat32Array(0, 0.642361, 1)
-colors = PackedColorArray(0.333333, 1, 1, 1, 0.568627, 1, 1, 1, 1, 1, 1, 0)
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.661932, 0.863636)
+colors = PackedColorArray(0.333333, 1, 1, 1, 1, 0.416777, 0.796061, 0.512915, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_q1jni"]
 gradient = SubResource("Gradient_5p37h")
@@ -61,64 +97,126 @@ fill = 1
 fill_from = Vector2(0.508547, 0.525641)
 fill_to = Vector2(0.918803, 0.923077)
 
-[sub_resource type="Animation" id="Animation_spn8n"]
-resource_name = "time_up"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("EndPhase/Label:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6, 0.8),
-"transitions": PackedFloat32Array(0.153893, 0.574349, 1),
-"update": 0,
-"values": [Vector2(458, 1143), Vector2(458, 200), Vector2(458, 500)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("EndPhase/GPUParticles2D:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.766667),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_37ucr"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EndPhase/Label:position")
+tracks/0/path = NodePath("EndPhase/GPUParticles2D:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(458, 1143)]
+"update": 1,
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("EndPhase/GPUParticles2D:emitting")
+tracks/1/path = NodePath("EndPhase/Label:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(457.5, 1168)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EndPhase/Label:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_spn8n"]
+resource_name = "time_up"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EndPhase/GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.766667),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EndPhase/Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.766667),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(457.5, 1168), Vector2(457.5, 210), Vector2(457.5, 334)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EndPhase/Label:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.766667),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4qkim"]
 _data = {
 "RESET": SubResource("Animation_37ucr"),
 "time_up": SubResource("Animation_spn8n")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6qd7"]
+bg_color = Color(0.710938, 0.465419, 0.679644, 1)
+border_color = Color(0.698433, 0.81618, 1, 1)
+
+[sub_resource type="Animation" id="Animation_iwoua"]
+resource_name = "open"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1, 1.8),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 1),
+"update": 0,
+"values": [Vector2(3500, 0), Vector2(1800, 0), Vector2(1700, 0), Vector2(-400, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3000, 0), Vector2(2000, 500), Vector2(0, 500)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1otph"]
+_data = {
+"open": SubResource("Animation_iwoua")
 }
 
 [node name="Game" type="Control" node_paths=PackedStringArray("feed")]
@@ -146,7 +244,6 @@ _liveFeed = NodePath("../Debug/LiveFeed")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="StartScreen" type="MarginContainer" parent="CanvasLayer"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -174,6 +271,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Game" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -206,6 +304,56 @@ grow_vertical = 2
 texture = ExtResource("8_51fxb")
 stretch_mode = 5
 
+[node name="TimerUI" type="HBoxContainer" parent="CanvasLayer/Game"]
+custom_minimum_size = Vector2(300, 64)
+layout_mode = 0
+offset_left = 1509.0
+offset_top = 39.0
+offset_right = 1863.0
+offset_bottom = 103.0
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="icon" type="TextureProgressBar" parent="CanvasLayer/Game/TimerUI"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+step = 0.1
+value = 82.2
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_cyndm")
+texture_progress = SubResource("GradientTexture2D_n7qbm")
+
+[node name="P" type="Panel" parent="CanvasLayer/Game/TimerUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_y8tye")
+
+[node name="MP" type="MarginContainer" parent="CanvasLayer/Game/TimerUI/P"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -19.59
+offset_right = 128.0
+offset_bottom = 19.59
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+
+[node name="TimerLabel" type="RichTextLabel" parent="CanvasLayer/Game/TimerUI/P/MP"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("9_oan2k")
+theme_override_fonts/italics_font = ExtResource("9_oan2k")
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "00:00"
+scroll_active = false
+
 [node name="Progress" type="MarginContainer" parent="CanvasLayer/Game"]
 layout_mode = 1
 anchors_preset = 12
@@ -221,40 +369,6 @@ grow_vertical = 0
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_right = 50
 
-[node name="HB" type="HBoxContainer" parent="CanvasLayer/Game/Progress"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Game/Progress/HB"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-text = "TIME LEFT"
-
-[node name="Bar" type="ProgressBar" parent="CanvasLayer/Game/Progress/HB"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-theme_override_font_sizes/font_size = 32
-max_value = 10.0
-value = 10.0
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Game/Progress/HB"]
-custom_minimum_size = Vector2(512, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 1.0
-step = 0.01
-value = 1.0
-nine_patch_stretch = true
-stretch_margin_left = 96
-stretch_margin_top = 32
-stretch_margin_right = 96
-stretch_margin_bottom = 32
-texture_under = ExtResource("9_4en5d")
-texture_over = ExtResource("10_xldoj")
-texture_progress = ExtResource("11_depn5")
-
 [node name="EndPhase" type="Control" parent="CanvasLayer/Game"]
 layout_mode = 1
 anchors_preset = 15
@@ -264,7 +378,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasLayer/Game/EndPhase"]
-position = Vector2(956, 556)
+position = Vector2(956, 432)
 emitting = false
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_mjl73")
@@ -275,17 +389,19 @@ explosiveness = 0.9
 
 [node name="Label" type="Label" parent="CanvasLayer/Game/EndPhase"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -502.0
-offset_top = 603.0
-offset_right = 503.0
-offset_bottom = 775.0
+anchor_bottom = 1.0
+offset_left = -502.5
+offset_top = 88.0
+offset_right = 502.5
+offset_bottom = 260.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(502, 86)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0.808678, 0.810334, 1)
 theme_override_constants/outline_size = 150
@@ -302,8 +418,8 @@ libraries = {
 "": SubResource("AnimationLibrary_4qkim")
 }
 
-[node name="WaitScreen" type="MarginContainer" parent="CanvasLayer"]
-visible = false
+[node name="WaitScreen" type="Control" parent="CanvasLayer"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -312,19 +428,48 @@ grow_vertical = 2
 theme = ExtResource("1_shxs3")
 script = ExtResource("8_w5huq")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/WaitScreen"]
+[node name="ColorRect" type="Panel" parent="CanvasLayer/WaitScreen"]
 layout_mode = 2
-color = Color(0.762937, 0.488418, 0.687437, 1)
+offset_left = 3500.0
+offset_right = 4580.0
+offset_bottom = 1080.0
+rotation = 0.523599
+scale = Vector2(1.51857, 3.20825)
+pivot_offset = Vector2(540, 540)
+theme_override_styles/panel = SubResource("StyleBoxFlat_m6qd7")
+
+[node name="ColorRect2" type="Panel" parent="CanvasLayer/WaitScreen/ColorRect"]
+layout_mode = 2
+offset_left = 920.984
+offset_top = -251.685
+offset_right = 2000.98
+offset_bottom = 828.315
+theme_override_styles/panel = SubResource("StyleBoxFlat_m6qd7")
 
 [node name="Label" type="Label" parent="CanvasLayer/WaitScreen"]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2040.0
+offset_top = -540.0
+offset_right = 3960.0
+offset_bottom = -492.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 64
 text = "WAIT FOR RESULTS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/WaitScreen"]
+libraries = {
+"": SubResource("AnimationLibrary_1otph")
+}
+
 [node name="Score" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -334,7 +479,40 @@ grow_vertical = 2
 theme = ExtResource("1_shxs3")
 script = ExtResource("9_cbwex")
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Score"]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.73061, 0.867376, 1, 1)
+
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Score"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 48.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Score/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Score/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Score/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "========================================="
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Score"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -342,12 +520,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Score/MarginContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Score/CenterContainer"]
+custom_minimum_size = Vector2(512, 256)
 layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Score/MarginContainer"]
-layout_mode = 2
-text = "SCORE"
+theme_override_font_sizes/font_size = 128
+text = "58 %"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="EndScore" type="Control" parent="CanvasLayer"]
 layout_mode = 3

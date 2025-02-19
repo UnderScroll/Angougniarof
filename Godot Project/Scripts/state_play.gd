@@ -7,18 +7,25 @@ class_name GameStatePlay
 func enter_state():
 	show()
 	prepare_play()
+	$TimerUI/icon.max_value = $Playtime.wait_time
 	$Playtime.start()
 
 func exit_state():
 	$Playtime.stop()
 	prepare_screenshot()
+	$AnimationPlayer.play("time_up")
+	await $AnimationPlayer.animation_finished
+	
 	change_state_to(StateHandler.States.WAIT)
 	
 	
 # ------------------------------------------------------------------------------ BASIC METHODS
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Progress/HB/Bar.value = $Playtime.time_left
+	$TimerUI/icon.value = $Playtime.time_left
+	var s = int($Playtime.time_left)
+	var ms = ($Playtime.time_left - s) * 100
+	$TimerUI/P/MP/TimerLabel.text = "%02d:%02d" % [s, ms]
 
 # ------------------------------------------------------------------------------ CUSTOM METHODS
 ## Callled right before screenshot
