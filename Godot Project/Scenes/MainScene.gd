@@ -3,39 +3,16 @@ extends Control
 const Pixelmatch := preload("res://addons/pixelmatch/pixelmatch.gd")
 @export var feed : Window
 
-var is_start : bool = true
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	$Debug.hide()
-	$Result.hide()
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	$CanvasLayer/Progress/Bar.value = $Playtime.time_left
-	pass
-
-func _input(event: InputEvent) -> void:
-	if is_start and event is InputEventKey: 
-		start()
-
-func start():
-	is_start = false
-	$CanvasLayer/StartScreen.hide()
-	$Debug.show()
-	$Result.show()
-	$Playtime.start()
 
 func result():
-	$CanvasLayer/Progress.hide()
-	await get_tree().create_timer(0.1).timeout
-	
-	compare_feed_picture()
-
-	$CanvasLayer/Progress.show()
+	#$CanvasLayer/Progress.hide()
+	#await get_tree().create_timer(0.1).timeout
+	#
+	#compare_feed_picture()
+#
+	#$CanvasLayer/Progress.show()
+	pass
 
 func compare_feed_picture():
 	var img1 = feed.get_viewport().get_texture().get_image()

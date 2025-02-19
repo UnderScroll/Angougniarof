@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl8c5yyv7fpro"]
+[gd_scene load_steps=10 format=3 uid="uid://bl8c5yyv7fpro"]
 
 [ext_resource type="Script" path="res://Scenes/MainScene.gd" id="1_2uhmy"]
 [ext_resource type="Shader" path="res://Shaders/grid.gdshader" id="1_ylkhj"]
+[ext_resource type="Script" path="res://Scripts/state_handler.gd" id="2_gpadl"]
 [ext_resource type="Script" path="res://Scripts/GodotTCPServer.cs" id="2_j4fv5"]
 [ext_resource type="Texture2D" uid="uid://cic1auydyq1ro" path="res://Assets/Textures/test2.png" id="4_8n4d2"]
+[ext_resource type="Script" path="res://Scripts/state_start.gd" id="4_bgc2m"]
+[ext_resource type="Script" path="res://Scripts/state_play.gd" id="5_u4ljb"]
+[ext_resource type="Script" path="res://Scripts/state_wait.gd" id="8_w5huq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jhfbi"]
 shader = ExtResource("1_ylkhj")
@@ -23,6 +27,12 @@ grow_vertical = 2
 script = ExtResource("1_2uhmy")
 feed = NodePath("Debug")
 
+[node name="StateHandler" type="Node" parent="." node_paths=PackedStringArray("start_node", "play_node", "wait_node")]
+script = ExtResource("2_gpadl")
+start_node = NodePath("../CanvasLayer/StartScreen")
+play_node = NodePath("../CanvasLayer/Game")
+wait_node = NodePath("../CanvasLayer/WaitScreen")
+
 [node name="Server" type="Node" parent="." node_paths=PackedStringArray("_liveFeed")]
 script = ExtResource("2_j4fv5")
 _kiloBytesAmount = 50
@@ -30,52 +40,13 @@ _liveFeed = NodePath("../Debug/LiveFeed")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BG" type="ColorRect" parent="CanvasLayer"]
-texture_filter = 1
-texture_repeat = 2
-material = SubResource("ShaderMaterial_jhfbi")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Shadow" type="TextureRect" parent="CanvasLayer"]
-texture_filter = 1
-texture_repeat = 2
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_8n4d2")
-
-[node name="Progress" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -64.0
-offset_bottom = -15.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_right = 50
-
-[node name="Bar" type="ProgressBar" parent="CanvasLayer/Progress"]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_font_sizes/font_size = 32
-max_value = 10.0
-step = 0.1
-value = 10.0
-
 [node name="StartScreen" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_bgc2m")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/StartScreen"]
 layout_mode = 2
@@ -88,6 +59,64 @@ text = "PRESS ANY KEY TO START THE GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Game" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_u4ljb")
+
+[node name="BG" type="ColorRect" parent="CanvasLayer/Game"]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_jhfbi")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow" type="TextureRect" parent="CanvasLayer/Game"]
+texture_filter = 1
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_8n4d2")
+
+[node name="Progress" type="MarginContainer" parent="CanvasLayer/Game"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -81.0
+offset_right = 2.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="Bar" type="ProgressBar" parent="CanvasLayer/Game/Progress"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
+max_value = 10.0
+step = 0.1
+value = 10.0
+
+[node name="Playtime" type="Timer" parent="CanvasLayer/Game"]
+wait_time = 10.0
+
 [node name="WaitScreen" type="MarginContainer" parent="CanvasLayer"]
 visible = false
 anchors_preset = 15
@@ -95,6 +124,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("8_w5huq")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/WaitScreen"]
 layout_mode = 2
@@ -107,11 +137,22 @@ text = "WAIT FOR RESULTS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Score" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EndScore" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Debug" type="Window" parent="."]
 title = "DEBUG"
 position = Vector2i(645, 40)
 size = Vector2i(640, 360)
-visible = false
 borderless = true
 
 [node name="LiveFeed" type="TextureRect" parent="Debug"]
@@ -122,7 +163,6 @@ offset_bottom = 40.0
 title = "RESULT"
 position = Vector2i(600, 170)
 size = Vector2i(640, 360)
-visible = false
 borderless = true
 
 [node name="ResultRect" type="TextureRect" parent="Result"]
@@ -132,7 +172,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Playtime" type="Timer" parent="."]
-wait_time = 10.0
-
-[connection signal="timeout" from="Playtime" to="." method="_on_playtime_timeout"]
+[connection signal="timeout" from="CanvasLayer/Game/Playtime" to="." method="_on_playtime_timeout"]
+[connection signal="timeout" from="CanvasLayer/Game/Playtime" to="CanvasLayer/Game" method="_on_playtime_timeout"]
