@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bl8c5yyv7fpro"]
+[gd_scene load_steps=11 format=3 uid="uid://bl8c5yyv7fpro"]
 
 [ext_resource type="Script" path="res://Scenes/MainScene.gd" id="1_2uhmy"]
 [ext_resource type="Shader" path="res://Shaders/grid.gdshader" id="1_ylkhj"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/state_start.gd" id="4_bgc2m"]
 [ext_resource type="Script" path="res://Scripts/state_play.gd" id="5_u4ljb"]
 [ext_resource type="Script" path="res://Scripts/state_wait.gd" id="8_w5huq"]
+[ext_resource type="Script" path="res://Scripts/state_score.gd" id="9_cbwex"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jhfbi"]
 shader = ExtResource("1_ylkhj")
@@ -142,6 +143,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("9_cbwex")
 
 [node name="EndScore" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -172,6 +174,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[connection signal="end_game" from="." to="StateHandler" method="_on_game_end_game"]
 [connection signal="result_ready" from="." to="CanvasLayer/WaitScreen" method="_on_game_result_ready"]
 [connection signal="timeout" from="CanvasLayer/Game/Playtime" to="CanvasLayer/Game" method="_on_playtime_timeout"]
 [connection signal="ask_result" from="CanvasLayer/WaitScreen" to="." method="_on_wait_screen_ask_result"]

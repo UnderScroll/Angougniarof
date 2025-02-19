@@ -11,7 +11,7 @@ func enter_state():
 
 func exit_state():
 	hide()
-	change_state_to(StateHandler.States.PLAY)
+	change_state_to(StateHandler.States.SCORE)
 
 func _on_game_result_ready() -> void:
 	exit_state()

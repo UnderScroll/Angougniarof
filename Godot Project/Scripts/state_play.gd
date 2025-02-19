@@ -1,6 +1,8 @@
 extends GameState
 class_name GameStatePlay
+
 # ------------------------------------------------------------------------------ OVERIDE METHODS
+
 
 func enter_state():
 	show()
@@ -29,6 +31,7 @@ func prepare_play():
 # ------------------------------------------------------------------------------ SIGNALS
 func _on_playtime_timeout() -> void:
 	exit_state()
+	
 
 func _on_wait_screen_ask_result() -> void:
 	prepare_screenshot()

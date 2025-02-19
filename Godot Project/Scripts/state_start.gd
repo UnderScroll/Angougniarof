@@ -14,3 +14,4 @@ func exit_state():
 func _input(event: InputEvent) -> void:
 	if is_on and event is InputEventKey :
 		change_state_to(StateHandler.States.PLAY)
+		exit_state()

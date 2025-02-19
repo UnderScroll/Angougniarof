@@ -60,3 +60,6 @@ func hide_all():
 	for nd in ui_nodes: 
 		nd.hide()
 	# j'avais prévenu, c'est beau ça
+
+func _on_game_end_game() -> void:
+	state = States.ENDSCORE
