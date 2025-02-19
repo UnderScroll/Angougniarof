@@ -25,7 +25,7 @@ func _ready() -> void:
 	ui_nodes.append(start_node)
 	ui_nodes.append(play_node)
 	ui_nodes.append(wait_node)
-	#ui_nodes.append(score_node)
+	ui_nodes.append(score_node)
 	#ui_nodes.append(endscore_node)
 	for i in ui_nodes:
 		i.connect("change_state", set_state)
@@ -55,7 +55,9 @@ func state_wait():
 	#hide_all() # will not work if previous state != PLAY
 	wait_node.enter_state()
 	
-func state_score():pass
+func state_score():
+	score_node.enter_state()
+	
 func state_endscore():pass
 
 ## Hide all nodes

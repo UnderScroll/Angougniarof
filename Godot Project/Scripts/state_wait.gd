@@ -9,12 +9,10 @@ func enter_state():
 	await $AnimationPlayer.animation_finished
 	#ask_result.emit()
 	#await get_tree().create_timer(0.1).timeout # waiting for game state to receive call
-	
-	
+	exit_state()
 
 
 func exit_state():
-	hide()
 	change_state_to(StateHandler.States.SCORE)
 
 func _on_game_result_ready() -> void:
