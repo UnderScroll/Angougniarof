@@ -1,0 +1,26 @@
+Event	ID	Name			Wwise Object Path	Notes
+	166791821	Play_TestBlip3D_LP			\Default Work Unit\GAMEPLAY\Play_TestBlip3D_LP	
+	768365626	Play_TestRandomBlip			\Default Work Unit\GAMEPLAY\Play_TestRandomBlip	
+	1957084899	Play_TestBlip			\Default Work Unit\GAMEPLAY\Play_TestBlip	
+	2215418163	Play_Stop_TestBlip_LP			\Default Work Unit\GAMEPLAY\Play_Stop_TestBlip_LP	
+	2418185146	Play_TestBlip3D			\Default Work Unit\GAMEPLAY\Play_TestBlip3D	
+	2541121866	Play_TestBlip_LP			\Default Work Unit\GAMEPLAY\Play_TestBlip_LP	
+	3240049516	Play_Score			\Default Work Unit\GAMEPLAY\Play_Score	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	2808377621	HighScore			\Default Work Unit\HighScore	
+
+Switch	ID	Name	Switch Group			Notes
+	820133554	NewRecord	HighScore			
+	1031377680	Old	HighScore			
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	192803316	TEST_RTPC_VolumeLoopTest			\Default Work Unit\TEST_RTPC_VolumeLoopTest	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	200614907	TEST_SFX_ToneShort_LP	C:\Users\ELE64f86f87a6b18\Documents\WwiseProjects\BotCatcher-Angouniaroff2025\.cache\DB\{DBBA66C4-6B7F-565A-CF53-7E2E16C38687}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\TEST_SFX_ToneShort_LP		176664
+	701058628	TEST_SFX_ScoreNormal_OS	C:\Users\ELE64f86f87a6b18\Documents\WwiseProjects\BotCatcher-Angouniaroff2025\.cache\58\{583A2A42-AD33-3119-94D0-4F7FDE508741}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\TEST_SFX_SwitchScore\TEST_SFX_ScoreNormal_OS		6494304
+	743526208	TEST_SFX_NewHighScore_OS	C:\Users\ELE64f86f87a6b18\Documents\WwiseProjects\BotCatcher-Angouniaroff2025\.cache\42\{42D626E0-7C49-CA73-A176-3C7F43F8D06C}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\TEST_SFX_SwitchScore\TEST_SFX_NewHighScore_OS		1067612
+	877431123	TEST_SFX_PopShort_35ms_OS_3D	C:\Users\ELE64f86f87a6b18\Documents\WwiseProjects\BotCatcher-Angouniaroff2025\.cache\8F\{8F230C15-946C-BC1A-0976-91BFF9FAEFDE}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\3DTests\TEST_SFX_PopShort_35ms_OS_3D		7776
+	951540270	TEST_SFX_ToneShort_1000ms_LP_3D	C:\Users\ELE64f86f87a6b18\Documents\WwiseProjects\BotCatcher-Angouniaroff2025\.cache\4E\{4E0C3DB0-509C-1903-2ABF-51C2D9C5F408}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\3DTests\TEST_SFX_ToneShort_1000ms_LP_3D		176664
+

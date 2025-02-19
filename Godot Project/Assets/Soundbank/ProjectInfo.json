@@ -1,0 +1,29 @@
+{
+ "ProjectInfo": {
+  "Project": {
+   "Name": "BotCatcher-Angouniaroff2025",
+   "GUID": "{A311F560-18BB-405F-9D69-20629053D67A}",
+   "Generator": "2024.1.1.8691"
+  },
+  "CacheRoot": "../../../../../../Documents/WwiseProjects/BotCatcher-Angouniaroff2025/.cache",
+  "Platforms": [
+   {
+    "Name": "Windows",
+    "GUID": "{215B835A-315B-4CE2-8C66-94F549661E22}",
+    "BasePlatform": "Windows",
+    "BasePlatformGUID": "{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}",
+    "Path": "Windows"
+   }
+  ],
+  "Languages": [
+   {
+    "Name": "English(US)",
+    "Id": "684519430",
+    "GUID": "{1CCE79E7-7AAB-43EE-9F49-BD9E4C534337}",
+    "Default": "true",
+    "UseAsStandIn": "true"
+   }
+  ],
+  "FileHash": "{5B270BBC-D4B4-E081-A29F-0F0C49D1D23B}"
+ }
+}

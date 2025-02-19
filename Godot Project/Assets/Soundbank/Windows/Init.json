@@ -1,0 +1,97 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1355168291",
+    "Type": "User",
+    "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
+    "Language": "SFX",
+    "Hash": "{AD93A25F-1E7F-2882-6AB0-124872E8B0F7}",
+    "ObjectPath": "Init",
+    "ShortName": "Init",
+    "Path": "Init.bnk",
+    "Plugins": {
+     "AudioDevices": [
+      {
+       "Id": "2317455096",
+       "Name": "No_Output",
+       "ObjectPath": "\\Audio Devices\\Default Work Unit\\No_Output",
+       "GUID": "{4E7DBD9F-C3E1-459D-B661-7996CDC3B145}",
+       "LibName": "No Output",
+       "LibId": "11862023"
+      },
+      {
+       "Id": "3859886410",
+       "Name": "System",
+       "ObjectPath": "\\Audio Devices\\Default Work Unit\\System",
+       "GUID": "{33A0D628-604F-4B19-B85C-8E8E41129001}",
+       "LibName": "System",
+       "LibId": "11403271"
+      }
+     ]
+    },
+    "Busses": [
+     {
+      "Id": "393239870",
+      "Name": "SFX",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\SFX",
+      "GUID": "{56C842D3-5E1C-41E3-960C-13DAE670D1AD}"
+     },
+     {
+      "Id": "1117531639",
+      "Name": "AMB",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\AMB",
+      "GUID": "{41073813-AC85-485A-B199-B4FEDC0A3F1D}"
+     },
+     {
+      "Id": "3803692087",
+      "Name": "Master Audio Bus",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus",
+      "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
+     },
+     {
+      "Id": "3991942870",
+      "Name": "MUSIC",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\MUSIC",
+      "GUID": "{E623ECE7-E459-4A86-AE00-CE35DA7C76A4}"
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "192803316",
+      "Name": "TEST_RTPC_VolumeLoopTest",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\TEST_RTPC_VolumeLoopTest",
+      "GUID": "{295DF3CB-2E4F-4770-8173-8AA954F5267F}"
+     }
+    ],
+    "SwitchGroups": [
+     {
+      "Id": "2808377621",
+      "Name": "HighScore",
+      "ObjectPath": "\\Switches\\Default Work Unit\\HighScore",
+      "GUID": "{CB436965-DEE9-47C2-AC52-EFC4CAEF590B}",
+      "Switches": [
+       {
+        "Id": "820133554",
+        "Name": "NewRecord",
+        "ObjectPath": "\\Switches\\Default Work Unit\\HighScore\\NewRecord",
+        "GUID": "{BDDB69B3-44A1-49FC-AB2F-8D83BE43F451}"
+       },
+       {
+        "Id": "1031377680",
+        "Name": "Old",
+        "ObjectPath": "\\Switches\\Default Work Unit\\HighScore\\Old",
+        "GUID": "{0FD24EF5-3C85-4183-9209-F0364B59F28C}"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{0EB1A79D-7298-89A7-43C8-1E9F388B6F20}"
+ }
+}
