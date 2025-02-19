@@ -26,10 +26,10 @@ func _ready() -> void:
 	ui_nodes.append(wait_node)
 	#ui_nodes.append(score_node)
 	#ui_nodes.append(endscore_node)
+	for i in ui_nodes:
+		i.connect("change_state", set_state)
 
-func _input(event: InputEvent) -> void:
-	if state == States.START and event is InputEventKey: 
-		state = States.PLAY
+
 
 func set_state(val : States) -> void:
 	match val:
@@ -49,7 +49,9 @@ func state_play():
 	hide_all()
 	play_node.enter_state()
 
-func state_wait():pass
+func state_wait():
+	#hide_all() # will not work if previous state != PLAY
+	wait_node.enter_state()
 func state_score():pass
 func state_endscore():pass
 

@@ -172,5 +172,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="timeout" from="CanvasLayer/Game/Playtime" to="." method="_on_playtime_timeout"]
+[connection signal="result_ready" from="." to="CanvasLayer/WaitScreen" method="_on_game_result_ready"]
 [connection signal="timeout" from="CanvasLayer/Game/Playtime" to="CanvasLayer/Game" method="_on_playtime_timeout"]
+[connection signal="ask_result" from="CanvasLayer/WaitScreen" to="." method="_on_wait_screen_ask_result"]
+[connection signal="ask_result" from="CanvasLayer/WaitScreen" to="CanvasLayer/Game" method="_on_wait_screen_ask_result"]
