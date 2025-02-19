@@ -1,17 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://cshx3o8dwk8k3"]
+[gd_scene load_steps=9 format=3 uid="uid://cshx3o8dwk8k3"]
 
 [ext_resource type="Script" path="res://Scenes/Game.gd" id="1_xlq2c"]
+[ext_resource type="Shader" path="res://Shaders/difference.gdshader" id="3_8sw1s"]
 [ext_resource type="Script" path="res://Scripts/GodotTCPServer.cs" id="3_jq21x"]
-[ext_resource type="Shader" path="res://Shaders/greyscale.gdshader" id="3_kk3rb"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h7inm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_45jxc"]
+shader = ExtResource("3_8sw1s")
+shader_parameter/reference_image = SubResource("NoiseTexture2D_h7inm")
 
 [sub_resource type="Gradient" id="Gradient_p0qj7"]
 colors = PackedColorArray(0.0588235, 0.0705882, 0.0901961, 1, 0.0588235, 0.0705882, 0.0901961, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_veqtx"]
 gradient = SubResource("Gradient_p0qj7")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cl7vr"]
-shader = ExtResource("3_kk3rb")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_n1pah"]
 
@@ -25,6 +28,7 @@ grow_vertical = 2
 script = ExtResource("1_xlq2c")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_45jxc")
 layout_mode = 0
 offset_right = 884.0
 offset_bottom = 886.0
@@ -33,17 +37,8 @@ stretch_mode = 5
 
 [node name="Server" type="Node" parent="." node_paths=PackedStringArray("_liveFeed")]
 script = ExtResource("3_jq21x")
-_kiloBytesAmount = 50
+_kiloBytesAmount = 100
 _liveFeed = NodePath("../TextureRect")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_cl7vr")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
@@ -62,6 +57,14 @@ offset_right = 1631.0
 offset_bottom = 605.0
 theme_override_font_sizes/font_size = 71
 text = "SET IMG 2"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 1217.0
+offset_top = 934.0
+offset_right = 1638.0
+offset_bottom = 1047.0
+theme_override_font_sizes/font_size = 71
+text = "SET REF"
 
 [node name="Do" type="Button" parent="."]
 layout_mode = 0
@@ -82,4 +85,5 @@ texture = SubResource("PlaceholderTexture2D_n1pah")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_set_reference_pressed"]
 [connection signal="pressed" from="Do" to="." method="_on_do_pressed"]
