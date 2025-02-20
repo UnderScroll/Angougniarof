@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://c5kth5u4462g" path="res://Assets/Shadows/Worm.png" id="23_uwln2"]
 
 [node name="Shadow" type="TextureRect"]
+modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 texture_repeat = 2
 anchors_preset = 8

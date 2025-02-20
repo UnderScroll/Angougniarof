@@ -7,7 +7,7 @@ var score : float = 0.0
 
 func enter_state():
 	show()
-	score = randf_range(50,100)
+	score = $"../..".last_score
 	$AnimationPlayer.play("open")
 
 func exit_state():

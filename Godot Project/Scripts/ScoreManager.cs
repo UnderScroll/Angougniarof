@@ -8,12 +8,10 @@ using System.Text;
 
 public partial class ScoreManager : Node
 {
-	[Export] private TextureRect sourceTex1 = null;
-    [Export] private TextureRect sourceTex2 = null;
-    [Export] private TextureRect outputTex = null;
+	[Export] private TextureRect outputTex = null;
 	[Export] private RenderingDevice.DataFormat texFormat = RenderingDevice.DataFormat.R8G8B8A8Unorm;
-    [Export] private float threshold = 0.2f;
-    private float sum = 0;
+	[Export] private float threshold = 0.2f;
+	private float sum = 0;
 	private float totalPixel = 0;
 
 	private RenderingDevice rd;
@@ -28,23 +26,19 @@ public partial class ScoreManager : Node
 	private Rid uniformSet;
 	private Rid pipeline;
 
-	public void _on_button_pressed()
+	public void set_tex1(Texture2D tex)
 	{
-		tex1 = sourceTex1.Texture;
+		tex1 = tex;
 	}
-	public void _on_button_2_pressed()
+	public void set_tex2(Texture2D tex)
 	{
-		tex2 = sourceTex2.Texture;
-	}
-	public void _on_do_pressed()
-	{
-		ManageCShader();
+		tex2 = tex;
 	}
 
 	private void InitGPU()
 	{
-		if (sourceTex1 == null || sourceTex2 == null)
-			throw new ArgumentException("Null reference exception img1 isn't assigned in ScoreManager");
+		//if (sourceTex1 == null || sourceTex2 == null)
+			//throw new ArgumentException("Null reference exception img1 isn't assigned in ScoreManager");
 
 		rd = RenderingServer.CreateLocalRenderingDevice();
 
@@ -90,13 +84,13 @@ public partial class ScoreManager : Node
 		return texUniform;
 	}
 
-	private void ManageCShader()
+	public float ManageCShader()
 	{
 		if (rd == null)
 			InitGPU();
 		Stopwatch watch = Stopwatch.StartNew();
-        sum = 0;
-        UpdateTex(tex1, ref tex1Rid);
+		sum = 0;
+		UpdateTex(tex1, ref tex1Rid);
 		UpdateTex(tex2, ref tex2Rid);
 
 
@@ -115,29 +109,31 @@ public partial class ScoreManager : Node
 		rd.Sync();
 
 
-        var paramBufferOut = rd.BufferGetData(paramRid);
-        var paramOut = new float[4];
-        Buffer.BlockCopy(paramBufferOut, 0, paramOut, 0, paramBufferOut.Length);
+		var paramBufferOut = rd.BufferGetData(paramRid);
+		var paramOut = new float[4];
+		Buffer.BlockCopy(paramBufferOut, 0, paramOut, 0, paramBufferOut.Length);
 
-        
+		
 
-        var outputBytes = rd.TextureGetData(tex1Rid, 0);
+		var outputBytes = rd.TextureGetData(tex1Rid, 0);
 		var outImage = Image.CreateFromData(tex1.GetWidth(), tex1.GetHeight(), false, Image.Format.Rgba8, outputBytes);
 
-        uint diff = 0;
+		uint diff = 0;
 		uint pixelCount = 0;
-        byte[] data = outImage.GetData();
+		byte[] data = outImage.GetData();
 
-        for (uint i =0; i < outImage.GetDataSize(); i+=4)
+		for (uint i =0; i < outImage.GetDataSize(); i+=4)
 		{
 			pixelCount ++;
-            if (data[i] <= 255){
+			if (data[i] <= 255){
 				diff += data[i];
 			}
 		}
-		GD.Print(((float)diff /(pixelCount * 255)*100) + "% in : " + watch.ElapsedMilliseconds + "ms" );
+		float res_f = (float)diff /(pixelCount * 255);
+		GD.Print((res_f) + "% in : " + watch.ElapsedMilliseconds + "ms" );
 		outputTex.Texture = ImageTexture.CreateFromImage(outImage);
-    }
+		return res_f;
+	}
 	private void UpdateTex(Texture2D tex, ref Rid texRid) 
 	{
 		var origin = tex.GetImage();

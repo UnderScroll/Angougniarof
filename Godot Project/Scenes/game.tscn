@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bl8c5yyv7fpro"]
+[gd_scene load_steps=11 format=3 uid="uid://bl8c5yyv7fpro"]
 
 [ext_resource type="Script" path="res://Scenes/MainScene.gd" id="1_2uhmy"]
 [ext_resource type="Theme" uid="uid://hs4d4pso4b6f" path="res://Assets/Theme.tres" id="1_shxs3"]
 [ext_resource type="Script" path="res://Scripts/state_handler.gd" id="2_gpadl"]
 [ext_resource type="Script" path="res://Scripts/GodotTCPServer.cs" id="2_j4fv5"]
+[ext_resource type="Script" path="res://Scripts/ScoreManager.cs" id="3_wvljf"]
 [ext_resource type="PackedScene" uid="uid://hy3dfkddoggr" path="res://Scenes/States/start_screen.tscn" id="5_afudm"]
 [ext_resource type="PackedScene" uid="uid://ds4ifo77l40a6" path="res://Scenes/States/game_screen.tscn" id="6_la783"]
 [ext_resource type="PackedScene" uid="uid://do5hkh5yfmn4j" path="res://Scenes/States/wait_screen.tscn" id="7_l3xr8"]
@@ -20,6 +21,10 @@ grow_vertical = 2
 theme = ExtResource("1_shxs3")
 script = ExtResource("1_2uhmy")
 feed = NodePath("Debug")
+
+[node name="ScoreManager" type="Node" parent="." node_paths=PackedStringArray("outputTex")]
+script = ExtResource("3_wvljf")
+outputTex = NodePath("../Result/ResultRect")
 
 [node name="StateHandler" type="Node" parent="." node_paths=PackedStringArray("start_node", "play_node", "wait_node", "score_node")]
 script = ExtResource("2_gpadl")
@@ -49,8 +54,6 @@ _liveFeed = NodePath("../Debug/LiveFeed")
 title = "DEBUG"
 position = Vector2i(645, 40)
 size = Vector2i(640, 360)
-visible = false
-borderless = true
 
 [node name="LiveFeed" type="TextureRect" parent="Debug"]
 offset_right = 40.0
@@ -60,8 +63,6 @@ offset_bottom = 40.0
 title = "RESULT"
 position = Vector2i(600, 170)
 size = Vector2i(640, 360)
-visible = false
-borderless = true
 
 [node name="ResultRect" type="TextureRect" parent="Result"]
 anchors_preset = 15
@@ -71,3 +72,5 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [connection signal="end_game" from="." to="StateHandler" method="_on_game_end_game"]
+[connection signal="result_ready" from="." to="CanvasLayer/Game" method="_on_game_result_ready"]
+[connection signal="ask_result" from="CanvasLayer/Game" to="." method="_on_game_ask_result"]
