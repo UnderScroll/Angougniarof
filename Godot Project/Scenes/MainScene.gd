@@ -6,24 +6,25 @@ const Pixelmatch := preload("res://addons/pixelmatch/pixelmatch.gd")
 @export var max_nb_of_games : int = 5
 var nb_game : int = 0
 
+var reference : Image
+
 var last_score : float = 0.0
 var total_score : float = 0.0
 
 
 signal result_ready
+signal reference_ready
 signal end_game
 
-
-func result():
-	#await get_tree().create_timer(0.1).timeout # wait for the play UI to hide
-	compare_feed_picture()
+func get_reference():
+	reference = feed.get_viewport().get_texture().get_image()
+	reference_ready.emit()
 
 func compare_feed_picture():
-	var img1 = feed.get_viewport().get_texture().get_image()
 	var img2 = get_viewport().get_texture().get_image()
-	img2.resize(img1.get_width(), img1.get_height())
+	img2.resize(reference.get_width(), reference.get_height())
 	
-	var i1 = ImageTexture.create_from_image(img1)
+	var i1 = ImageTexture.create_from_image(reference)
 	var i2 = ImageTexture.create_from_image(img2)
 	$ScoreManager.set_tex1(i1)
 	$ScoreManager.set_tex2(i2)
@@ -42,3 +43,7 @@ func on_game_done(score : float) -> void:
 
 func _on_game_ask_result() -> void:
 	compare_feed_picture()
+
+
+func _on_game_ask_reference():
+	get_reference()

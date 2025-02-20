@@ -29,7 +29,7 @@ func _ready() -> void:
 	#ui_nodes.append(endscore_node)
 	for i in ui_nodes:
 		i.connect("change_state", set_state)
-	state = States.START
+
 
 
 

@@ -1,39 +1,78 @@
-[gd_scene load_steps=11 format=3 uid="uid://dondth6ferakg"]
+[gd_scene load_steps=20 format=3 uid="uid://dondth6ferakg"]
 
 [ext_resource type="Theme" uid="uid://hs4d4pso4b6f" path="res://Assets/Theme.tres" id="1_nki2o"]
 [ext_resource type="Script" path="res://Scripts/state_score.gd" id="2_oopo1"]
 
-[sub_resource type="Curve" id="Curve_gcpbk"]
-_data = [Vector2(0, 0.497135), 0.0, 0.0, 0, 0, Vector2(0.200704, 1), 0.0, 0.0, 0, 0, Vector2(0.746479, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ryii"]
+bg_color = Color(0.8125, 0.8125, 0.8125, 0)
 
-[sub_resource type="CurveTexture" id="CurveTexture_4kcdp"]
-curve = SubResource("Curve_gcpbk")
+[sub_resource type="Gradient" id="Gradient_fcivi"]
+colors = PackedColorArray(0.632813, 0.167986, 0.352667, 1, 1, 0.778765, 0.220588, 1)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mjl73"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7rea5"]
+gradient = SubResource("Gradient_fcivi")
+fill_from = Vector2(0.508547, 1)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b63jh"]
+texture = SubResource("GradientTexture2D_7rea5")
+
+[sub_resource type="Gradient" id="Gradient_c003e"]
+colors = PackedColorArray(1, 0.276131, 0.358389, 1, 1, 0.778765, 0.220588, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p4fpr"]
+gradient = SubResource("Gradient_c003e")
+
+[sub_resource type="Curve" id="Curve_767o5"]
+_data = [Vector2(0, 0.496067), 0.0, 1.96064, 0, 0, Vector2(0.847701, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8ggub"]
+curve = SubResource("Curve_767o5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d2ddw"]
 particle_flag_disable_z = true
-emission_shape_scale = Vector3(500, 10, 1)
+emission_shape_scale = Vector3(1080, 1, 1)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
-angle_min = 1.07288e-05
-angle_max = 1.07288e-05
+gravity = Vector3(0, -980, 0)
+scale_curve = SubResource("CurveTexture_8ggub")
+color_ramp = SubResource("GradientTexture1D_p4fpr")
+
+[sub_resource type="Gradient" id="Gradient_perco"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.386364, 0.633523)
+colors = PackedColorArray(1, 1, 1, 1, 0.652344, 0.137806, 0.275884, 0.613636, 0.652, 0.138, 0.276, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rogc5"]
+gradient = SubResource("Gradient_perco")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.0128205)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ibk32"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(100, 1, 1)
 direction = Vector3(0, 0, 0)
 spread = 180.0
-initial_velocity_min = 700.0
-initial_velocity_max = 700.0
-gravity = Vector3(0, 980, 0)
-scale_curve = SubResource("CurveTexture_4kcdp")
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
+scale_curve = SubResource("CurveTexture_8ggub")
 
-[sub_resource type="Gradient" id="Gradient_pp0lo"]
+[sub_resource type="Gradient" id="Gradient_nhpr2"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.661932, 0.863636)
-colors = PackedColorArray(0.999, 0.982531, 1, 1, 1, 0.9358, 0.191642, 0.512915, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.386364, 0.633523)
+colors = PackedColorArray(0.996094, 1, 0.992188, 1, 1, 0.869008, 0.116635, 0.613636, 0.652, 0.138, 0.276, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_cferw"]
-gradient = SubResource("Gradient_pp0lo")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kpg7j"]
+gradient = SubResource("Gradient_nhpr2")
 fill = 1
-fill_from = Vector2(0.508547, 0.525641)
-fill_to = Vector2(0.918803, 0.923077)
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.0128205)
 
 [sub_resource type="Animation" id="Animation_rcy65"]
 length = 0.001
@@ -97,13 +136,36 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_nki2o")
 script = ExtResource("2_oopo1")
-score_label = NodePath("CenterContainer/Label")
+reveal_duration = 5.0
+score_label = NodePath("MarginContainer/VBoxContainer/Label")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0.73061, 0.867376, 1, 1)
+color = Color(0, 0, 0, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(64, 780)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.174
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.0800018
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_2ryii")
+theme_override_styles/fill = SubResource("StyleBoxTexture_b63jh")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Fizzle" type="GPUParticles2D" parent="."]
+position = Vector2(980, 1082)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_d2ddw")
+texture = SubResource("GradientTexture2D_rogc5")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -120,45 +182,29 @@ theme_override_constants/margin_bottom = 64
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "SCORE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "========================================="
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="CenterContainer"]
-custom_minimum_size = Vector2(512, 256)
-layout_mode = 2
-theme_override_font_sizes/font_size = 128
-text = "LET'S SEE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="CenterContainer"]
-position = Vector2(975, 538)
+[node name="Fizzle2" type="GPUParticles2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(891.5, 20)
 emitting = false
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_mjl73")
-texture = SubResource("GradientTexture2D_cferw")
-lifetime = 0.5
-one_shot = true
-explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_ibk32")
+texture = SubResource("GradientTexture2D_kpg7j")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.88273, 0, 1)
+theme_override_constants/outline_size = 45
+theme_override_font_sizes/font_size = 96
+text = "0%"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_wv1gu")
 }
+
+[node name="EndScoreReveal" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="EndScoreReveal" to="." method="_on_end_score_reveal_timeout"]

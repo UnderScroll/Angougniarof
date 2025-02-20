@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Captcha"
-run/main_scene="res://Scenes/Tutorial Showcase.tscn"
+run/main_scene="res://Scenes/game.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=3
+window/size/mode=4
 window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
 
@@ -30,4 +30,4 @@ project/assembly_name="Godot_And_Webcams - Exhibit 2"
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0.881937, 0.881937, 0.881937, 1)
+environment/defaults/default_clear_color=Color(1, 1, 1, 1)
