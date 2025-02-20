@@ -30,7 +30,7 @@ score_node = NodePath("../CanvasLayer/Score")
 
 [node name="Server" type="Node" parent="." node_paths=PackedStringArray("_liveFeed")]
 script = ExtResource("2_j4fv5")
-_kiloBytesAmount = 50
+_kiloBytesAmount = 128
 _liveFeed = NodePath("../Debug/LiveFeed")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
