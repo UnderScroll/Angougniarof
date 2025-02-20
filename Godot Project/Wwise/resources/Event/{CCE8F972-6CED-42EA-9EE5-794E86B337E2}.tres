@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://d4ecccaa2anjq"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_TestBlip"
+id = 1957084899
+guid = "{CCE8F972-6CED-42EA-9EE5-794E86B337E2}"
+dummy = true
