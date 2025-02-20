@@ -67,7 +67,6 @@ public partial class GodotTCPServer : Node
 				ImageTexture imageTexture = new ImageTexture();
 				imageTexture.SetImage(receivedImage);
 				_liveFeed.Texture = imageTexture;
-				GD.Print("Salut");
 			}
 		}
 		client.Close();
