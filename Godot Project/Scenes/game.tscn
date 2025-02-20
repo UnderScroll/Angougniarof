@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bl8c5yyv7fpro"]
+[gd_scene load_steps=10 format=3 uid="uid://d2txnyg4h6xcu"]
 
 [ext_resource type="Script" path="res://Scenes/MainScene.gd" id="1_2uhmy"]
 [ext_resource type="Theme" uid="uid://hs4d4pso4b6f" path="res://Assets/Theme.tres" id="1_shxs3"]
@@ -30,7 +30,7 @@ score_node = NodePath("../CanvasLayer/Score")
 
 [node name="Server" type="Node" parent="." node_paths=PackedStringArray("_liveFeed")]
 script = ExtResource("2_j4fv5")
-_kiloBytesAmount = 50
+_kiloBytesAmount = 128
 _liveFeed = NodePath("../Debug/LiveFeed")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -49,7 +49,6 @@ _liveFeed = NodePath("../Debug/LiveFeed")
 title = "DEBUG"
 position = Vector2i(645, 40)
 size = Vector2i(640, 360)
-visible = false
 borderless = true
 
 [node name="LiveFeed" type="TextureRect" parent="Debug"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://cshx3o8dwk8k3"]
 
-[ext_resource type="Script" path="res://Scenes/Game.gd" id="1_xlq2c"]
 [ext_resource type="Script" path="res://Scripts/GodotTCPServer.cs" id="3_jq21x"]
 [ext_resource type="Shader" path="res://Shaders/greyscale.gdshader" id="3_kk3rb"]
+[ext_resource type="Script" path="res://Scripts/ScoreManager.cs" id="4_e058s"]
 
 [sub_resource type="Gradient" id="Gradient_p0qj7"]
 colors = PackedColorArray(0.0588235, 0.0705882, 0.0901961, 1, 0.0588235, 0.0705882, 0.0901961, 1)
@@ -15,14 +15,16 @@ shader = ExtResource("3_kk3rb")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_n1pah"]
 
-[node name="Visuals" type="Control"]
+[node name="Visuals" type="Control" node_paths=PackedStringArray("sourceTex", "outputTex")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_xlq2c")
+script = ExtResource("4_e058s")
+sourceTex = NodePath("TextureRect")
+outputTex = NodePath("TextureRect2")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -33,7 +35,7 @@ stretch_mode = 5
 
 [node name="Server" type="Node" parent="." node_paths=PackedStringArray("_liveFeed")]
 script = ExtResource("3_jq21x")
-_kiloBytesAmount = 50
+_kiloBytesAmount = 128
 _liveFeed = NodePath("../TextureRect")
 
 [node name="ColorRect" type="ColorRect" parent="."]
