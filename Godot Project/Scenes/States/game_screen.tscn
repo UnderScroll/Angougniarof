@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://hs4d4pso4b6f" path="res://Assets/Theme.tres" id="1_vynqb"]
 [ext_resource type="Script" path="res://Scripts/state_play.gd" id="2_alhrt"]
 [ext_resource type="Shader" path="res://Shaders/grid.gdshader" id="3_ngncb"]
-[ext_resource type="Texture2D" uid="uid://d0ye41g3mvqsl" path="res://Assets/Textures/Shadow_squirel_tes.png" id="4_7m102"]
+[ext_resource type="PackedScene" uid="uid://bsci1as1f70pf" path="res://Scenes/shadow.tscn" id="4_aajqt"]
 [ext_resource type="FontFile" uid="uid://bcfxo0uqq4vjw" path="res://Assets/Fonts/Monocode-Regular-V01.02b.ttf" id="5_i5aj4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jhfbi"]
@@ -190,17 +190,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Shadow" type="TextureRect" parent="."]
-texture_filter = 1
-texture_repeat = 2
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_7m102")
-stretch_mode = 5
+[node name="Shadow" parent="." instance=ExtResource("4_aajqt")]
+layout_mode = 0
+anchors_preset = 0
 
 [node name="TimerUI" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 64)
