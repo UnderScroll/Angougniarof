@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dd8gy5f1viwie"]
+
+[ext_resource type="Shader" path="res://Shaders/difference.gdshader" id="1_effl0"]
+[ext_resource type="Script" path="res://Scripts/GodotTCPServer.cs" id="2_2d17t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_45jxc"]
+shader = ExtResource("1_effl0")
+
+[sub_resource type="Gradient" id="Gradient_p0qj7"]
+colors = PackedColorArray(0.0588235, 0.0705882, 0.0901961, 1, 0.0588235, 0.0705882, 0.0901961, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_veqtx"]
+gradient = SubResource("Gradient_p0qj7")
+
+[node name="ShaderPass" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_45jxc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_veqtx")
+stretch_mode = 5
+
+[node name="Server" type="Node" parent="." node_paths=PackedStringArray("_liveFeed")]
+script = ExtResource("2_2d17t")
+_kiloBytesAmount = 100
+_liveFeed = NodePath("../TextureRect")

@@ -52,7 +52,7 @@ _liveFeed = NodePath("../Debug/LiveFeed")
 
 [node name="Debug" type="Window" parent="."]
 title = "DEBUG"
-position = Vector2i(645, 40)
+position = Vector2i(406, 40)
 size = Vector2i(640, 360)
 
 [node name="LiveFeed" type="TextureRect" parent="Debug"]
@@ -61,7 +61,7 @@ offset_bottom = 40.0
 
 [node name="Result" type="Window" parent="."]
 title = "RESULT"
-position = Vector2i(600, 170)
+position = Vector2i(406, 170)
 size = Vector2i(640, 360)
 
 [node name="ResultRect" type="TextureRect" parent="Result"]
