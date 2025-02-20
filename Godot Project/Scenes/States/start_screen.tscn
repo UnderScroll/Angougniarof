@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://hy3dfkddoggr"]
+
+[ext_resource type="Theme" uid="uid://hs4d4pso4b6f" path="res://Assets/Theme.tres" id="1_ajovm"]
+[ext_resource type="Script" path="res://Scripts/state_start.gd" id="2_q5ism"]
+
+[sub_resource type="Gradient" id="Gradient_8j4wn"]
+interpolation_mode = 2
+colors = PackedColorArray(0, 0.603922, 0.678431, 1, 0.919546, 0.669337, 0.903638, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qvytl"]
+gradient = SubResource("Gradient_8j4wn")
+fill_to = Vector2(0.825688, 0.582569)
+
+[node name="StartScreen" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ajovm")
+script = ExtResource("2_q5ism")
+
+[node name="ColorRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_qvytl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="RichTextLabel" parent="VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center][wave amp=50.0 freq=10.0 connected=1]PRESS ANY KEY TO START THE GAME"
+fit_content = true
+scroll_active = false
