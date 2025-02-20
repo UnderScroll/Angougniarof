@@ -1,6 +1,7 @@
 using Godot;
 using Godot.NativeInterop;
 using System;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -10,7 +11,9 @@ public partial class ScoreManager : Node
 	[Export] private TextureRect sourceTex = null;
 	[Export] private TextureRect outputTex = null;
 	[Export] private RenderingDevice.DataFormat texFormat = RenderingDevice.DataFormat.R8G8B8A8Unorm;
-	[Export] private float accuracy = 0.2f;
+    [Export] private float threshold = 0.2f;
+    private float sum = 0;
+	private float totalPixel = 0;
 
 	private RenderingDevice rd;
 
@@ -48,16 +51,18 @@ public partial class ScoreManager : Node
 		var shaderBytecode = shaderFile.GetSpirV();
 		var shader = rd.ShaderCreateFromSpirV(shaderBytecode);
 
-
-		float[] input = { accuracy,0,0,0};
+		
+		float[] input = { threshold, 0,0,0};
 		paramByte = new byte[input.Length * sizeof(float)];
 		Buffer.BlockCopy(input, 0, paramByte, 0, paramByte.Length);
-		paramRid = rd.UniformBufferCreate((uint)paramByte.Length, paramByte);
+		paramRid = rd.StorageBufferCreate((uint)paramByte.Length, paramByte);
 
 		var parameterUniform = new RDUniform();
-		parameterUniform.UniformType = RenderingDevice.UniformType.UniformBuffer;
+		parameterUniform.UniformType = RenderingDevice.UniformType.StorageBuffer;
 		parameterUniform.Binding = 2;
 		parameterUniform.AddId(paramRid);
+
+
 
 		uniformSet = rd.UniformSetCreate(new Godot.Collections.Array<RDUniform> { 
 			SetUpTex(tex1, ref tex1Rid, 0), 
@@ -88,15 +93,15 @@ public partial class ScoreManager : Node
 	{
 		if (rd == null)
 			InitGPU();
-
-		
-		UpdateTex(tex1, ref tex1Rid);
+		Stopwatch watch = Stopwatch.StartNew();
+        sum = 0;
+        UpdateTex(tex1, ref tex1Rid);
 		UpdateTex(tex2, ref tex2Rid);
 
 
-		float[] input = { accuracy, 0, 0, 0 };
-		Buffer.BlockCopy(input, 0, paramByte, 0, paramByte.Length);
-		rd.BufferUpdate(paramRid, 0, (uint)paramByte.Length, paramByte);
+		//float[] input = { accuracy, 0, 0, 0 };
+		//Buffer.BlockCopy(input, 0, paramByte, 0, paramByte.Length);
+		//rd.BufferUpdate(paramRid, 0, (uint)paramByte.Length, paramByte);
 
 		var computeList = rd.ComputeListBegin();
 		rd.ComputeListBindComputePipeline(computeList, pipeline);
@@ -109,10 +114,29 @@ public partial class ScoreManager : Node
 		rd.Sync();
 
 
-		var outputBytes = rd.TextureGetData(tex1Rid, 0);
+        var paramBufferOut = rd.BufferGetData(paramRid);
+        var paramOut = new float[4];
+        Buffer.BlockCopy(paramBufferOut, 0, paramOut, 0, paramBufferOut.Length);
+
+        
+
+        var outputBytes = rd.TextureGetData(tex1Rid, 0);
 		var outImage = Image.CreateFromData(tex1.GetWidth(), tex1.GetHeight(), false, Image.Format.Rgba8, outputBytes);
+
+        uint diff = 0;
+		uint pixelCount = 0;
+        byte[] data = outImage.GetData();
+
+        for (uint i =0; i < outImage.GetDataSize(); i+=4)
+		{
+			pixelCount ++;
+            if (data[i] <= 255){
+				diff += data[i];
+			}
+		}
+		GD.Print(((float)diff /(pixelCount * 255)*100) + "% in : " + watch.ElapsedMilliseconds + "ms" );
 		outputTex.Texture = ImageTexture.CreateFromImage(outImage);
-	}
+    }
 	private void UpdateTex(Texture2D tex, ref Rid texRid) 
 	{
 		var origin = tex.GetImage();
