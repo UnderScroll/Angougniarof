@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bl8c5yyv7fpro"]
+[gd_scene load_steps=10 format=3 uid="uid://cb3uduoh0jq0c"]
 
 [ext_resource type="Script" path="res://Scenes/MainScene.gd" id="1_2uhmy"]
 [ext_resource type="Shader" path="res://Shaders/grid.gdshader" id="1_ylkhj"]
@@ -151,7 +151,7 @@ offset_bottom = 40.0
 
 [node name="Debug" type="Window" parent="."]
 title = "DEBUG"
-position = Vector2i(645, 40)
+position = Vector2i(406, 40)
 size = Vector2i(640, 360)
 borderless = true
 
@@ -161,7 +161,7 @@ offset_bottom = 40.0
 
 [node name="Result" type="Window" parent="."]
 title = "RESULT"
-position = Vector2i(600, 170)
+position = Vector2i(406, 170)
 size = Vector2i(640, 360)
 borderless = true
 

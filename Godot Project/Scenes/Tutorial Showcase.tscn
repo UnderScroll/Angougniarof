@@ -1,24 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cshx3o8dwk8k3"]
+[gd_scene load_steps=4 format=3 uid="uid://cshx3o8dwk8k3"]
 
 [ext_resource type="Script" path="res://Scenes/Game.gd" id="1_xlq2c"]
-[ext_resource type="Shader" path="res://Shaders/difference.gdshader" id="3_8sw1s"]
-[ext_resource type="Script" path="res://Scripts/GodotTCPServer.cs" id="3_jq21x"]
+[ext_resource type="PackedScene" uid="uid://dd8gy5f1viwie" path="res://Scenes/shader_pass.tscn" id="4_mqkt6"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h7inm"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_mlf70"]
+viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_45jxc"]
-shader = ExtResource("3_8sw1s")
-shader_parameter/reference_image = SubResource("NoiseTexture2D_h7inm")
-
-[sub_resource type="Gradient" id="Gradient_p0qj7"]
-colors = PackedColorArray(0.0588235, 0.0705882, 0.0901961, 1, 0.0588235, 0.0705882, 0.0901961, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_veqtx"]
-gradient = SubResource("Gradient_p0qj7")
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_n1pah"]
-
-[node name="Visuals" type="Control"]
+[node name="Visuals" type="Control" node_paths=PackedStringArray("diff_texture")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,64 +14,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xlq2c")
+diff_texture = NodePath("TextureRect")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+gui_disable_input = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="ShaderPass" parent="SubViewport" instance=ExtResource("4_mqkt6")]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_45jxc")
 layout_mode = 0
-offset_right = 884.0
-offset_bottom = 886.0
-texture = SubResource("GradientTexture2D_veqtx")
-stretch_mode = 5
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ViewportTexture_mlf70")
 
-[node name="Server" type="Node" parent="." node_paths=PackedStringArray("_liveFeed")]
-script = ExtResource("3_jq21x")
-_kiloBytesAmount = 100
-_liveFeed = NodePath("../TextureRect")
-
-[node name="Button" type="Button" parent="."]
+[node name="GetScoreButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1208.0
-offset_top = 339.0
-offset_right = 1629.0
-offset_bottom = 452.0
-theme_override_font_sizes/font_size = 71
-text = "SET IMG 1"
+offset_left = 1297.0
+offset_top = 818.0
+offset_right = 1390.0
+offset_bottom = 849.0
+text = "GET SCORE"
 
-[node name="Button2" type="Button" parent="."]
+[node name="SetRefButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1210.0
-offset_top = 492.0
-offset_right = 1631.0
-offset_bottom = 605.0
-theme_override_font_sizes/font_size = 71
-text = "SET IMG 2"
-
-[node name="Button3" type="Button" parent="."]
-offset_left = 1217.0
-offset_top = 934.0
-offset_right = 1638.0
-offset_bottom = 1047.0
-theme_override_font_sizes/font_size = 71
+offset_left = 1310.0
+offset_top = 779.0
+offset_right = 1377.0
+offset_bottom = 810.0
 text = "SET REF"
 
-[node name="Do" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1214.0
-offset_top = 642.0
-offset_right = 1635.0
-offset_bottom = 755.0
-theme_override_font_sizes/font_size = 71
-text = "DO"
-
-[node name="TextureRect2" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 1088.0
-offset_top = 36.0
-offset_right = 1128.0
-offset_bottom = 76.0
-texture = SubResource("PlaceholderTexture2D_n1pah")
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="Button3" to="." method="_on_button_set_reference_pressed"]
-[connection signal="pressed" from="Do" to="." method="_on_do_pressed"]
+[connection signal="pressed" from="GetScoreButton" to="." method="_on_get_score_button_pressed"]
+[connection signal="pressed" from="SetRefButton" to="." method="_on_set_ref_button_pressed"]

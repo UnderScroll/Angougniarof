@@ -13,7 +13,7 @@ void fragment() {
 	vec4 texel = texture(TEXTURE, UV);
 	float texel_value = (COLOR.r + COLOR.g + COLOR.b) / 3.0f;
 	
-	float diff = reference_value - texel_value;
+	float diff = texel_value - reference_value;
 	float normalized_diff = abs(diff);
 	
 	COLOR.rgb = vec3(normalized_diff);
