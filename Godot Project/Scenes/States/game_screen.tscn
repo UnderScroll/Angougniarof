@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://ds4ifo77l40a6"]
+[gd_scene load_steps=22 format=3 uid="uid://ds4ifo77l40a6"]
 
 [ext_resource type="Theme" uid="uid://hs4d4pso4b6f" path="res://Assets/Theme.tres" id="1_vynqb"]
 [ext_resource type="Script" path="res://Scripts/state_play.gd" id="2_alhrt"]
 [ext_resource type="Shader" path="res://Shaders/grid.gdshader" id="3_ngncb"]
 [ext_resource type="PackedScene" uid="uid://bsci1as1f70pf" path="res://Scenes/shadow.tscn" id="4_aajqt"]
 [ext_resource type="FontFile" uid="uid://bcfxo0uqq4vjw" path="res://Assets/Fonts/Monocode-Regular-V01.02b.ttf" id="5_i5aj4"]
+[ext_resource type="Texture2D" uid="uid://c452bv3t4kiw5" path="res://Assets/Textures/particle_square.png" id="6_077tx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jhfbi"]
 shader = ExtResource("3_ngncb")
@@ -168,6 +169,23 @@ _data = {
 "time_up": SubResource("Animation_spn8n")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tafyg"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0, 1000, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 1.07288e-05
+angle_max = 360.0
+direction = Vector3(-1, -1, 0)
+spread = 0.0
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.5
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
 [node name="Game" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -305,5 +323,15 @@ wait_time = 10.0
 libraries = {
 "": SubResource("AnimationLibrary_4qkim")
 }
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(1985, 1161)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_tafyg")
+texture = ExtResource("6_077tx")
+lifetime = 10.0
+explosiveness = 0.08
+randomness = 0.37
+visibility_rect = Rect2(-3802.95, -4760.45, 4058.9, 5979.84)
 
 [connection signal="timeout" from="Playtime" to="." method="_on_playtime_timeout"]
