@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/state_handler.gd" id="2_gpadl"]
 [ext_resource type="Script" path="res://Scripts/GodotTCPServer.cs" id="2_j4fv5"]
 [ext_resource type="PackedScene" uid="uid://hy3dfkddoggr" path="res://Scenes/States/start_screen.tscn" id="5_afudm"]
-[ext_resource type="PackedScene" uid="uid://ds4ifo77l40a6" path="res://Scenes/States/game.tscn" id="6_m1mek"]
+[ext_resource type="PackedScene" uid="uid://ds4ifo77l40a6" path="res://Scenes/States/game_screen.tscn" id="6_la783"]
 [ext_resource type="PackedScene" uid="uid://do5hkh5yfmn4j" path="res://Scenes/States/wait_screen.tscn" id="7_l3xr8"]
 [ext_resource type="PackedScene" uid="uid://dondth6ferakg" path="res://Scenes/States/score.tscn" id="8_kxpaj"]
 [ext_resource type="PackedScene" uid="uid://ex24t4sj3dhy" path="res://Scenes/States/end_score.tscn" id="9_6wme4"]
@@ -37,7 +37,7 @@ _liveFeed = NodePath("../Debug/LiveFeed")
 
 [node name="StartScreen" parent="CanvasLayer" instance=ExtResource("5_afudm")]
 
-[node name="Game" parent="CanvasLayer" instance=ExtResource("6_m1mek")]
+[node name="Game" parent="CanvasLayer" instance=ExtResource("6_la783")]
 
 [node name="WaitScreen" parent="CanvasLayer" instance=ExtResource("7_l3xr8")]
 
