@@ -169,7 +169,6 @@ _data = {
 }
 
 [node name="Game" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -191,8 +190,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Shadow" parent="." instance=ExtResource("4_aajqt")]
-layout_mode = 0
-anchors_preset = 0
+layout_mode = 1
 
 [node name="TimerUI" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 64)

@@ -35,6 +35,7 @@ func prepare_screenshot():
 ## Callled right AFTER screenshot, reset the view to default
 func prepare_play():
 	$Progress.show()
+	$Shadow.random_shadow()
 # ------------------------------------------------------------------------------ SIGNALS
 func _on_playtime_timeout() -> void:
 	exit_state()
