@@ -8,8 +8,9 @@ using System.Text;
 
 public partial class ScoreManager : Node
 {
-	[Export] private TextureRect sourceTex = null;
-	[Export] private TextureRect outputTex = null;
+	[Export] private TextureRect sourceTex1 = null;
+    [Export] private TextureRect sourceTex2 = null;
+    [Export] private TextureRect outputTex = null;
 	[Export] private RenderingDevice.DataFormat texFormat = RenderingDevice.DataFormat.R8G8B8A8Unorm;
     [Export] private float threshold = 0.2f;
     private float sum = 0;
@@ -29,11 +30,11 @@ public partial class ScoreManager : Node
 
 	public void _on_button_pressed()
 	{
-		tex1 = sourceTex.Texture;
+		tex1 = sourceTex1.Texture;
 	}
 	public void _on_button_2_pressed()
 	{
-		tex2 = sourceTex.Texture;
+		tex2 = sourceTex2.Texture;
 	}
 	public void _on_do_pressed()
 	{
@@ -42,7 +43,7 @@ public partial class ScoreManager : Node
 
 	private void InitGPU()
 	{
-		if (sourceTex == null)
+		if (sourceTex1 == null || sourceTex2 == null)
 			throw new ArgumentException("Null reference exception img1 isn't assigned in ScoreManager");
 
 		rd = RenderingServer.CreateLocalRenderingDevice();
