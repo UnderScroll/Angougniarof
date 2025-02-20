@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://bl8c5yyv7fpro"]
+
+[ext_resource type="Script" path="res://Scenes/MainScene.gd" id="1_2uhmy"]
+[ext_resource type="Theme" uid="uid://hs4d4pso4b6f" path="res://Assets/Theme.tres" id="1_shxs3"]
+[ext_resource type="Script" path="res://Scripts/state_handler.gd" id="2_gpadl"]
+[ext_resource type="Script" path="res://Scripts/GodotTCPServer.cs" id="2_j4fv5"]
+[ext_resource type="PackedScene" uid="uid://hy3dfkddoggr" path="res://Scenes/States/start_screen.tscn" id="5_afudm"]
+[ext_resource type="PackedScene" uid="uid://ds4ifo77l40a6" path="res://Scenes/States/game_screen.tscn" id="6_la783"]
+[ext_resource type="PackedScene" uid="uid://do5hkh5yfmn4j" path="res://Scenes/States/wait_screen.tscn" id="7_l3xr8"]
+[ext_resource type="PackedScene" uid="uid://dondth6ferakg" path="res://Scenes/States/score.tscn" id="8_kxpaj"]
+[ext_resource type="PackedScene" uid="uid://ex24t4sj3dhy" path="res://Scenes/States/end_score.tscn" id="9_6wme4"]
+
+[node name="Game" type="Control" node_paths=PackedStringArray("feed")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_shxs3")
+script = ExtResource("1_2uhmy")
+feed = NodePath("Debug")
+
+[node name="StateHandler" type="Node" parent="." node_paths=PackedStringArray("start_node", "play_node", "wait_node", "score_node")]
+script = ExtResource("2_gpadl")
+start_node = NodePath("../CanvasLayer/StartScreen")
+play_node = NodePath("../CanvasLayer/Game")
+wait_node = NodePath("../CanvasLayer/WaitScreen")
+score_node = NodePath("../CanvasLayer/Score")
+
+[node name="Server" type="Node" parent="." node_paths=PackedStringArray("_liveFeed")]
+script = ExtResource("2_j4fv5")
+_kiloBytesAmount = 50
+_liveFeed = NodePath("../Debug/LiveFeed")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StartScreen" parent="CanvasLayer" instance=ExtResource("5_afudm")]
+
+[node name="Game" parent="CanvasLayer" instance=ExtResource("6_la783")]
+
+[node name="WaitScreen" parent="CanvasLayer" instance=ExtResource("7_l3xr8")]
+
+[node name="Score" parent="CanvasLayer" instance=ExtResource("8_kxpaj")]
+
+[node name="EndScore" parent="CanvasLayer" instance=ExtResource("9_6wme4")]
+
+[node name="Debug" type="Window" parent="."]
+title = "DEBUG"
+position = Vector2i(645, 40)
+size = Vector2i(640, 360)
+visible = false
+borderless = true
+
+[node name="LiveFeed" type="TextureRect" parent="Debug"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Result" type="Window" parent="."]
+title = "RESULT"
+position = Vector2i(600, 170)
+size = Vector2i(640, 360)
+visible = false
+borderless = true
+
+[node name="ResultRect" type="TextureRect" parent="Result"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="end_game" from="." to="StateHandler" method="_on_game_end_game"]

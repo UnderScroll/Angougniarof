@@ -21,8 +21,13 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=2
+window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
 
 [dotnet]
 
 project/assembly_name="Godot_And_Webcams - Exhibit 2"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.881937, 0.881937, 0.881937, 1)
