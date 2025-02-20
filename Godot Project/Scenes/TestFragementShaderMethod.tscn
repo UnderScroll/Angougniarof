@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://chs3cfybx5ioa"]
+
+[ext_resource type="Script" path="res://Scenes/Game.gd" id="1_jmrxg"]
+[ext_resource type="PackedScene" uid="uid://dd8gy5f1viwie" path="res://Scenes/shader_pass.tscn" id="2_dvfuu"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mlf70"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Visuals" type="Control" node_paths=PackedStringArray("diff_texture")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jmrxg")
+diff_texture = NodePath("TextureRect")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+gui_disable_input = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="ShaderPass" parent="SubViewport" instance=ExtResource("2_dvfuu")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ViewportTexture_mlf70")
+
+[node name="GetScoreButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1297.0
+offset_top = 818.0
+offset_right = 1390.0
+offset_bottom = 849.0
+text = "GET SCORE"
+
+[node name="SetRefButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1310.0
+offset_top = 779.0
+offset_right = 1377.0
+offset_bottom = 810.0
+text = "SET REF"
+
+[connection signal="pressed" from="GetScoreButton" to="." method="_on_get_score_button_pressed"]
+[connection signal="pressed" from="SetRefButton" to="." method="_on_set_ref_button_pressed"]
