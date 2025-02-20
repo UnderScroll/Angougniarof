@@ -1,0 +1,8 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://gwh1i3ijoyp7"]
+
+[resource]
+is_in_user_defined_sound_bank = true
+name = "Play_Score"
+id = 3240049516
+guid = "{260E0C95-9823-460A-A8F1-5E837F01DBAE}"
+dummy = true

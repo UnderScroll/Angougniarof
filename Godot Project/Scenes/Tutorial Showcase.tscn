@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cshx3o8dwk8k3"]
+[gd_scene load_steps=10 format=3 uid="uid://cshx3o8dwk8k3"]
 
 [ext_resource type="Script" path="res://Scripts/GodotTCPServer.cs" id="3_jq21x"]
 [ext_resource type="Shader" path="res://Shaders/greyscale.gdshader" id="3_kk3rb"]
 [ext_resource type="Script" path="res://Scripts/ScoreManager.cs" id="4_e058s"]
+[ext_resource type="WwiseBank" uid="uid://j5ismij5o3mv" path="res://Wwise/resources/SoundBank/{1D5C29E6-76D0-4CD8-82DA-A8C4BA25992A}.tres" id="4_i1soy"]
+[ext_resource type="WwiseEvent" uid="uid://gwh1i3ijoyp7" path="res://Wwise/resources/Event/{260E0C95-9823-460A-A8F1-5E837F01DBAE}.tres" id="5_kdiqm"]
 
 [sub_resource type="Gradient" id="Gradient_p0qj7"]
 colors = PackedColorArray(0.0588235, 0.0705882, 0.0901961, 1, 0.0588235, 0.0705882, 0.0901961, 1)
@@ -80,6 +82,27 @@ offset_top = 36.0
 offset_right = 1128.0
 offset_bottom = 76.0
 texture = SubResource("PlaceholderTexture2D_n1pah")
+
+[node name="Audio" type="Node" parent="."]
+process_mode = 3
+
+[node name="AudioManager" type="Node" parent="Audio"]
+
+[node name="AkBank" type="AkBank" parent="Audio/AudioManager"]
+bank = ExtResource("4_i1soy")
+load_on = 2
+unload_on = 3
+
+[node name="AudioUtilities" type="Node2D" parent="Audio"]
+
+[node name="AkListener2D" type="AkListener2D" parent="Audio/AudioUtilities"]
+
+[node name="AudioEvents" type="Node2D" parent="Audio"]
+
+[node name="AkEvent2D" type="AkEvent2D" parent="Audio/AudioEvents"]
+event = ExtResource("5_kdiqm")
+trigger_on = 2
+stop_on = 3
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
