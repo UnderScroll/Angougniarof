@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ex24t4sj3dhy"]
+
+[ext_resource type="Theme" uid="uid://hs4d4pso4b6f" path="res://Assets/Theme.tres" id="1_kbcmn"]
+
+[node name="EndScore" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_kbcmn")
