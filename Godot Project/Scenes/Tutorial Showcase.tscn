@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cshx3o8dwk8k3"]
+[gd_scene load_steps=8 format=3 uid="uid://dmf8tn0lqsbfy"]
 
 [ext_resource type="Script" path="res://Scripts/GodotTCPServer.cs" id="3_jq21x"]
 [ext_resource type="Shader" path="res://Shaders/greyscale.gdshader" id="3_kk3rb"]
