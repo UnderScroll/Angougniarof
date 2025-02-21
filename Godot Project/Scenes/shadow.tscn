@@ -1,23 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://bsci1as1f70pf"]
+[gd_scene load_steps=11 format=3 uid="uid://bsci1as1f70pf"]
 
-[ext_resource type="Texture2D" uid="uid://n6x2rie2n1j1" path="res://Assets/Shadows/Vector 16.png" id="1_5rmki"]
+[ext_resource type="Texture2D" uid="uid://bck2a0uw2mhwv" path="res://Assets/Shadows/Vector 16.png" id="1_5rmki"]
 [ext_resource type="Script" path="res://Scripts/shadow_randomizer.gd" id="2_5vk5y"]
-[ext_resource type="Texture2D" uid="uid://2uum1hgpbqkh" path="res://Assets/Shadows/Group 1.png" id="3_fay2s"]
-[ext_resource type="Texture2D" uid="uid://bsuu47v4wlyjr" path="res://Assets/Shadows/Group 8.png" id="4_7q84u"]
-[ext_resource type="Texture2D" uid="uid://mfs1o4lxypsi" path="res://Assets/Shadows/Group 9.png" id="5_vusfk"]
-[ext_resource type="Texture2D" uid="uid://be2whtky12yyu" path="res://Assets/Shadows/Group 10.png" id="6_nbgua"]
-[ext_resource type="Texture2D" uid="uid://diyioydxx58fr" path="res://Assets/Shadows/Group 11.png" id="7_26a0o"]
-[ext_resource type="Texture2D" uid="uid://cpyjvmwn7r7bf" path="res://Assets/Shadows/Group 12.png" id="8_imms4"]
-[ext_resource type="Texture2D" uid="uid://swq1revxw6la" path="res://Assets/Shadows/Group 13.png" id="9_i0m2a"]
-[ext_resource type="Texture2D" uid="uid://d2gvyk85g4bml" path="res://Assets/Shadows/Vector 7.png" id="10_aegv3"]
-[ext_resource type="Texture2D" uid="uid://276xrm5subpn" path="res://Assets/Shadows/Vector 8.png" id="11_xxhcp"]
-[ext_resource type="Texture2D" uid="uid://bfup0dqt4lvf8" path="res://Assets/Shadows/Vector 9.png" id="12_nowwt"]
-[ext_resource type="Texture2D" uid="uid://bq6a12spgmykd" path="res://Assets/Shadows/Vector 10.png" id="13_hj7sg"]
-[ext_resource type="Texture2D" uid="uid://c2ynqyobeocu8" path="res://Assets/Shadows/Vector 13.png" id="14_dmjqs"]
-[ext_resource type="Texture2D" uid="uid://7w7xtypjqem2" path="res://Assets/Shadows/Vector 15.png" id="15_hdubo"]
-[ext_resource type="Texture2D" uid="uid://bcckmp1musuph" path="res://Assets/Shadows/Vector 22.png" id="16_2lyps"]
-[ext_resource type="Texture2D" uid="uid://b56qqape30lm2" path="res://Assets/Shadows/Vector 33.png" id="17_hulaj"]
-[ext_resource type="Texture2D" uid="uid://d2c2ul8rrqhas" path="res://Assets/Shadows/Vector 49.png" id="18_j2bba"]
+[ext_resource type="Texture2D" uid="uid://k1bmbe1e3flw" path="res://Assets/Shadows/Group 1.png" id="3_fay2s"]
+[ext_resource type="Texture2D" uid="uid://bjyqrkj2fbeeq" path="res://Assets/Shadows/Group 8.png" id="4_7q84u"]
+[ext_resource type="Texture2D" uid="uid://3lw17b6mpqao" path="res://Assets/Shadows/Group 10.png" id="6_nbgua"]
+[ext_resource type="Texture2D" uid="uid://cgjd07k0wlabu" path="res://Assets/Shadows/Group 11.png" id="7_26a0o"]
+[ext_resource type="Texture2D" uid="uid://b5da03os8wm8n" path="res://Assets/Shadows/Group 12.png" id="8_imms4"]
+[ext_resource type="Texture2D" uid="uid://qq2sfsqhytvq" path="res://Assets/Shadows/Group 13.png" id="9_i0m2a"]
+[ext_resource type="Texture2D" uid="uid://c837bwqk0k8pq" path="res://Assets/Shadows/Vector 8.png" id="11_xxhcp"]
+[ext_resource type="Texture2D" uid="uid://cd3kgke5dfnnj" path="res://Assets/Shadows/Vector 9.png" id="12_nowwt"]
 
 [node name="Shadow" type="TextureRect"]
 modulate = Color(0, 0, 0, 1)
@@ -34,7 +26,6 @@ offset_right = 310.5
 offset_bottom = 340.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_vusfk")
 stretch_mode = 5
 script = ExtResource("2_5vk5y")
-shadows = Array[Texture2D]([ExtResource("3_fay2s"), ExtResource("4_7q84u"), ExtResource("5_vusfk"), ExtResource("6_nbgua"), ExtResource("7_26a0o"), ExtResource("8_imms4"), ExtResource("9_i0m2a"), ExtResource("10_aegv3"), ExtResource("11_xxhcp"), ExtResource("12_nowwt"), ExtResource("13_hj7sg"), ExtResource("14_dmjqs"), ExtResource("15_hdubo"), ExtResource("1_5rmki"), ExtResource("16_2lyps"), ExtResource("17_hulaj"), ExtResource("18_j2bba")])
+shadows = Array[Texture2D]([ExtResource("3_fay2s"), ExtResource("4_7q84u"), ExtResource("6_nbgua"), ExtResource("7_26a0o"), ExtResource("8_imms4"), ExtResource("9_i0m2a"), ExtResource("11_xxhcp"), ExtResource("12_nowwt"), ExtResource("1_5rmki")])
