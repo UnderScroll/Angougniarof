@@ -81,6 +81,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Total" type="HBoxContainer" parent="MC/VB"]
+modulate = Color(0.34902, 1, 1, 1)
 layout_mode = 2
 
 [node name="Name" type="Label" parent="MC/VB/Total"]
@@ -94,5 +95,6 @@ text = "0%"
 horizontal_alignment = 1
 
 [node name="Conclusion" type="Label" parent="MC/VB"]
+modulate = Color(1, 0.290196, 1, 1)
 layout_mode = 2
 text = "RESULT : AI / HUMAN / ALIEN"

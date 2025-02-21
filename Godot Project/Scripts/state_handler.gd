@@ -27,7 +27,7 @@ func _ready() -> void:
 	ui_nodes.append(play_node)
 	ui_nodes.append(wait_node)
 	ui_nodes.append(score_node)
-	#ui_nodes.append(endscore_node)
+	ui_nodes.append(endscore_node)
 	for i in ui_nodes:
 		i.connect("change_state", set_state)
 
@@ -45,13 +45,14 @@ func set_state(val : States) -> void:
 
 
 func state_start():
-	if is_end: 
-		state = States.ENDSCORE
-		return
+	print("START")
 	hide_all()
 	start_node.enter_state()
 
 func state_play():
+	if is_end: 
+		state = States.ENDSCORE
+		return
 	hide_all()
 	play_node.enter_state()
 

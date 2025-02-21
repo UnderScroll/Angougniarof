@@ -43,5 +43,4 @@ func end_reveal():
 	$EndScoreReveal.start()
 
 func _on_end_score_reveal_timeout():
-	
-	change_state_to(StateHandler.States.START)
+	change_state_to(StateHandler.States.PLAY)

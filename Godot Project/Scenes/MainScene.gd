@@ -58,3 +58,9 @@ func _on_game_ask_result() -> void:
 
 func _on_game_ask_reference():
 	get_reference()
+
+func _on_end_score_restart() -> void:
+	nb_game = 0
+	last_score = 0
+	total_score = 0
+	$StateHandler.is_end = false

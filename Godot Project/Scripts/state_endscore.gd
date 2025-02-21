@@ -6,32 +6,46 @@ class_name GameStateEndScore
 @export var captach_result_node : Control
 
 var result_inst = preload("res://Scenes/loop_result.tscn")
+var is_on : bool = false
 
-
+signal restart
 
 func enter_state() -> void:
+	is_on = true
+	$MC/VB/Total/Value.text = ""
 	$MC/VB/Conclusion.text = "RESULT :"
-	update_results()
+	for i in captach_result_node.get_children() : i.queue_free() # clean results
 	show()
+	update_results()
+
 
 func exit_state() -> void:
+	is_on = false
 	scores.clear()
 	hide()
+	change_state_to(StateHandler.States.START)
+	restart.emit()
+
+func _input(event: InputEvent) -> void:
+	if is_on and event is InputEventKey :
+		exit_state()
+	
 
 func update_results():
-	for i in captach_result_node.get_children() : i.queue_free() # clean results
 	var ct : int = 0
 	for i in scores:
+		await get_tree().create_timer(1.0).timeout
 		var inst : LoopResult = result_inst.instantiate()
 		inst.score = i
 		inst.no = ct+1
 		ct += 1
 		inst.update_result()
 		captach_result_node.add_child(inst)
+	$MC/VB/Total/Value.text = str(endscore)
+	await get_tree().create_timer(1.0).timeout
 	end_result()
 
 func end_result():
-	$MC/VB/Total/Value.text = str(endscore)
 	var loops = scores.size()
 	var median_score = endscore / loops
 	
@@ -44,4 +58,3 @@ func end_result():
 	
 	$MC/VB/Conclusion.text = "RESULT : ALIEN"
 	
-		
