@@ -29,7 +29,18 @@ func compare_feed_picture():
 	$ScoreManager.set_tex1(i1)
 	$ScoreManager.set_tex2(i2)
 	
-	var res_f : float = ($ScoreManager.ManageCShader()) * 100
+	var res = $ScoreManager.ManageCShader()
+	
+	# 0.2 = 100
+	# 0.13 = ?
+	print("---------------")
+	var res_f : float = (1.0-$ScoreManager.ManageCShader()) # value between 0.8 and 1.0
+	print(res_f)
+	res_f = clamp(res_f - 0.8, 0.0,0.19) # value between 0.0 and 0.2
+	print(res_f)
+	res_f = (res_f * 100) / 0.19 # value betwwen 0 and 100 !
+	print(res_f)
+	
 	on_game_done(res_f)
 
 func on_game_done(score : float) -> void:
