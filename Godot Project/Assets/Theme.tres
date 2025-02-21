@@ -3,6 +3,8 @@
 [ext_resource type="FontFile" uid="uid://goi143bh7m32" path="res://Assets/Fonts/SM.TTF" id="1_2bo5j"]
 
 [resource]
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 16
 Label/font_sizes/font_size = 64
 Label/fonts/font = ExtResource("1_2bo5j")
 RichTextLabel/font_sizes/normal_font_size = 64

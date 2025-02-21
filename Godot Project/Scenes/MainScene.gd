@@ -29,7 +29,6 @@ func compare_feed_picture():
 	$ScoreManager.set_tex1(i1)
 	$ScoreManager.set_tex2(i2)
 	
-	var res = $ScoreManager.ManageCShader()
 	
 	# 0.2 = 100
 	# 0.13 = ?
@@ -47,9 +46,11 @@ func on_game_done(score : float) -> void:
 	nb_game += 1
 	last_score = score
 	total_score += score
+	$CanvasLayer/EndScore.scores.append(int(score))
+	$CanvasLayer/EndScore.endscore = int(total_score)
 	result_ready.emit()
-	#if nb_game >= max_nb_of_games:
-		#end_game.emit()
+	if nb_game >= max_nb_of_games:
+		end_game.emit()
 
 
 func _on_game_ask_result() -> void:

@@ -17,6 +17,7 @@ enum States {
 
 ## code helper - easier to use
 var ui_nodes : Array[GameState] = []
+var is_end : bool = false
 
 func _ready() -> void:
 	
@@ -44,6 +45,9 @@ func set_state(val : States) -> void:
 
 
 func state_start():
+	if is_end: 
+		state = States.ENDSCORE
+		return
 	hide_all()
 	start_node.enter_state()
 
@@ -52,13 +56,13 @@ func state_play():
 	play_node.enter_state()
 
 func state_wait():
-	#hide_all() # will not work if previous state != PLAY
 	wait_node.enter_state()
 	
 func state_score():
 	score_node.enter_state()
 	
-func state_endscore():pass
+func state_endscore():
+	endscore_node.enter_state()
 
 ## Hide all nodes
 func hide_all(): 
@@ -67,4 +71,4 @@ func hide_all():
 	# j'avais prévenu, c'est beau ça
 
 func _on_game_end_game() -> void:
-	state = States.ENDSCORE
+	is_end = true

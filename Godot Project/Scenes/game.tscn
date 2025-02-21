@@ -21,17 +21,19 @@ grow_vertical = 2
 theme = ExtResource("1_shxs3")
 script = ExtResource("1_2uhmy")
 feed = NodePath("Debug")
+max_nb_of_games = 1
 
 [node name="ScoreManager" type="Node" parent="." node_paths=PackedStringArray("outputTex")]
 script = ExtResource("3_wvljf")
 outputTex = NodePath("../Result/ResultRect")
 
-[node name="StateHandler" type="Node" parent="." node_paths=PackedStringArray("start_node", "play_node", "wait_node", "score_node")]
+[node name="StateHandler" type="Node" parent="." node_paths=PackedStringArray("start_node", "play_node", "wait_node", "score_node", "endscore_node")]
 script = ExtResource("2_gpadl")
 start_node = NodePath("../CanvasLayer/StartScreen")
 play_node = NodePath("../CanvasLayer/Game")
 wait_node = NodePath("../CanvasLayer/WaitScreen")
 score_node = NodePath("../CanvasLayer/Score")
+endscore_node = NodePath("../CanvasLayer/EndScore")
 
 [node name="Server" type="Node" parent="." node_paths=PackedStringArray("_liveFeed")]
 script = ExtResource("2_j4fv5")

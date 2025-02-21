@@ -1,10 +1,98 @@
-[gd_scene load_steps=2 format=3 uid="uid://ex24t4sj3dhy"]
+[gd_scene load_steps=5 format=3 uid="uid://ex24t4sj3dhy"]
 
-[ext_resource type="Theme" uid="uid://hs4d4pso4b6f" path="res://Assets/Theme.tres" id="1_kbcmn"]
+[ext_resource type="FontFile" uid="uid://goi143bh7m32" path="res://Assets/Fonts/SM.TTF" id="1_6owju"]
+[ext_resource type="PackedScene" uid="uid://bup2gnc5s1u3j" path="res://Scenes/loop_result.tscn" id="2_na15f"]
+[ext_resource type="Script" path="res://Scripts/state_endscore.gd" id="2_oy3fd"]
 
-[node name="EndScore" type="Control"]
+[sub_resource type="Theme" id="Theme_wvbbm"]
+Label/constants/outline_size = 32
+Label/font_sizes/font_size = 64
+Label/fonts/font = ExtResource("1_6owju")
+
+[node name="EndScore" type="Control" node_paths=PackedStringArray("captach_result_node")]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme = ExtResource("1_kbcmn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_wvbbm")
+script = ExtResource("2_oy3fd")
+captach_result_node = NodePath("MC/VB/CaptchaResults")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.976471, 0.615686, 0.372549, 1)
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VB" type="VBoxContainer" parent="MC"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MC/VB"]
+layout_mode = 2
+text = "LET'S SEE WHO YOU ARE..."
+horizontal_alignment = 1
+
+[node name="Separator" type="Label" parent="MC/VB"]
+layout_mode = 2
+text = "---------------------------------------------------------------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CaptchaResults" type="VBoxContainer" parent="MC/VB"]
+layout_mode = 2
+
+[node name="LoopResult" parent="MC/VB/CaptchaResults" instance=ExtResource("2_na15f")]
+layout_mode = 2
+
+[node name="LoopResult2" parent="MC/VB/CaptchaResults" instance=ExtResource("2_na15f")]
+layout_mode = 2
+
+[node name="LoopResult3" parent="MC/VB/CaptchaResults" instance=ExtResource("2_na15f")]
+layout_mode = 2
+
+[node name="LoopResult4" parent="MC/VB/CaptchaResults" instance=ExtResource("2_na15f")]
+layout_mode = 2
+
+[node name="LoopResult5" parent="MC/VB/CaptchaResults" instance=ExtResource("2_na15f")]
+layout_mode = 2
+
+[node name="Separator2" type="Label" parent="MC/VB"]
+layout_mode = 2
+text = "---------------------------------------------------------------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Total" type="HBoxContainer" parent="MC/VB"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MC/VB/Total"]
+layout_mode = 2
+text = "TOTAL : "
+horizontal_alignment = 1
+
+[node name="Value" type="Label" parent="MC/VB/Total"]
+layout_mode = 2
+text = "0%"
+horizontal_alignment = 1
+
+[node name="Conclusion" type="Label" parent="MC/VB"]
+layout_mode = 2
+text = "RESULT : AI / HUMAN / ALIEN"
