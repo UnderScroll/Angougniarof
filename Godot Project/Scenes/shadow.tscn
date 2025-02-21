@@ -1,27 +1,23 @@
-[gd_scene load_steps=23 format=3 uid="uid://bsci1as1f70pf"]
+[gd_scene load_steps=19 format=3 uid="uid://bsci1as1f70pf"]
 
+[ext_resource type="Texture2D" uid="uid://n6x2rie2n1j1" path="res://Assets/Shadows/Vector 16.png" id="1_5rmki"]
 [ext_resource type="Script" path="res://Scripts/shadow_randomizer.gd" id="2_5vk5y"]
-[ext_resource type="Texture2D" uid="uid://c0fgelitda8vr" path="res://Assets/Shadows/Arrow.png" id="3_hlnjm"]
-[ext_resource type="Texture2D" uid="uid://cst7kdyu5cc6d" path="res://Assets/Shadows/Butterfly.png" id="4_cg8k1"]
-[ext_resource type="Texture2D" uid="uid://mj8f5jaaqdul" path="res://Assets/Shadows/Cat.png" id="5_04xnw"]
-[ext_resource type="Texture2D" uid="uid://cbuiyjqwp5qt2" path="res://Assets/Shadows/Chair.png" id="6_rtc28"]
-[ext_resource type="Texture2D" uid="uid://65cwpc3lft2r" path="res://Assets/Shadows/Curved.png" id="7_eryiv"]
-[ext_resource type="Texture2D" uid="uid://csotll4r58btu" path="res://Assets/Shadows/Difficult.png" id="8_7g4i3"]
-[ext_resource type="Texture2D" uid="uid://cfw2ye4e3ipok" path="res://Assets/Shadows/Duo.png" id="9_nftft"]
-[ext_resource type="Texture2D" uid="uid://8kp8puq27ufd" path="res://Assets/Shadows/Easy.png" id="10_wokqb"]
-[ext_resource type="Texture2D" uid="uid://b7acq607tvvni" path="res://Assets/Shadows/House.png" id="11_l1p5m"]
-[ext_resource type="Texture2D" uid="uid://dvw04tkm1gqyj" path="res://Assets/Shadows/Mustach.png" id="12_xsu6b"]
-[ext_resource type="Texture2D" uid="uid://oq6aay0oufry" path="res://Assets/Shadows/Needle.png" id="13_2splu"]
-[ext_resource type="Texture2D" uid="uid://e4kwsuvm0i53" path="res://Assets/Shadows/Noodle_Bowl.png" id="14_mh5r0"]
-[ext_resource type="Texture2D" uid="uid://xg3xiiy3x3dg" path="res://Assets/Shadows/Normal.png" id="15_mn875"]
-[ext_resource type="Texture2D" uid="uid://bbgbv8ostcarm" path="res://Assets/Shadows/Play.png" id="16_5td2g"]
-[ext_resource type="Texture2D" uid="uid://bmov14ich7yh7" path="res://Assets/Shadows/Pot.png" id="17_oq1cs"]
-[ext_resource type="Texture2D" uid="uid://c0xbvfkyx06r4" path="res://Assets/Shadows/Squirrel.png" id="18_0ary1"]
-[ext_resource type="Texture2D" uid="uid://c7k2ihm4x4ewi" path="res://Assets/Shadows/Swan.png" id="19_6o3cf"]
-[ext_resource type="Texture2D" uid="uid://dwy0n2f77phdr" path="res://Assets/Shadows/Tree.png" id="20_71sok"]
-[ext_resource type="Texture2D" uid="uid://dig1jam10xnbc" path="res://Assets/Shadows/Triangle.png" id="21_gdl8j"]
-[ext_resource type="Texture2D" uid="uid://cuu644go8k3ho" path="res://Assets/Shadows/Weird_Shape.png" id="22_3ljjt"]
-[ext_resource type="Texture2D" uid="uid://c5kth5u4462g" path="res://Assets/Shadows/Worm.png" id="23_uwln2"]
+[ext_resource type="Texture2D" uid="uid://2uum1hgpbqkh" path="res://Assets/Shadows/Group 1.png" id="3_fay2s"]
+[ext_resource type="Texture2D" uid="uid://bsuu47v4wlyjr" path="res://Assets/Shadows/Group 8.png" id="4_7q84u"]
+[ext_resource type="Texture2D" uid="uid://mfs1o4lxypsi" path="res://Assets/Shadows/Group 9.png" id="5_vusfk"]
+[ext_resource type="Texture2D" uid="uid://be2whtky12yyu" path="res://Assets/Shadows/Group 10.png" id="6_nbgua"]
+[ext_resource type="Texture2D" uid="uid://diyioydxx58fr" path="res://Assets/Shadows/Group 11.png" id="7_26a0o"]
+[ext_resource type="Texture2D" uid="uid://cpyjvmwn7r7bf" path="res://Assets/Shadows/Group 12.png" id="8_imms4"]
+[ext_resource type="Texture2D" uid="uid://swq1revxw6la" path="res://Assets/Shadows/Group 13.png" id="9_i0m2a"]
+[ext_resource type="Texture2D" uid="uid://d2gvyk85g4bml" path="res://Assets/Shadows/Vector 7.png" id="10_aegv3"]
+[ext_resource type="Texture2D" uid="uid://276xrm5subpn" path="res://Assets/Shadows/Vector 8.png" id="11_xxhcp"]
+[ext_resource type="Texture2D" uid="uid://bfup0dqt4lvf8" path="res://Assets/Shadows/Vector 9.png" id="12_nowwt"]
+[ext_resource type="Texture2D" uid="uid://bq6a12spgmykd" path="res://Assets/Shadows/Vector 10.png" id="13_hj7sg"]
+[ext_resource type="Texture2D" uid="uid://c2ynqyobeocu8" path="res://Assets/Shadows/Vector 13.png" id="14_dmjqs"]
+[ext_resource type="Texture2D" uid="uid://7w7xtypjqem2" path="res://Assets/Shadows/Vector 15.png" id="15_hdubo"]
+[ext_resource type="Texture2D" uid="uid://bcckmp1musuph" path="res://Assets/Shadows/Vector 22.png" id="16_2lyps"]
+[ext_resource type="Texture2D" uid="uid://b56qqape30lm2" path="res://Assets/Shadows/Vector 33.png" id="17_hulaj"]
+[ext_resource type="Texture2D" uid="uid://d2c2ul8rrqhas" path="res://Assets/Shadows/Vector 49.png" id="18_j2bba"]
 
 [node name="Shadow" type="TextureRect"]
 modulate = Color(0, 0, 0, 1)
@@ -38,7 +34,7 @@ offset_right = 310.5
 offset_bottom = 340.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("20_71sok")
+texture = ExtResource("1_5rmki")
 stretch_mode = 5
 script = ExtResource("2_5vk5y")
-shadows = Array[Texture2D]([ExtResource("3_hlnjm"), ExtResource("4_cg8k1"), ExtResource("5_04xnw"), ExtResource("6_rtc28"), ExtResource("7_eryiv"), ExtResource("8_7g4i3"), ExtResource("9_nftft"), ExtResource("10_wokqb"), ExtResource("11_l1p5m"), ExtResource("12_xsu6b"), ExtResource("13_2splu"), ExtResource("14_mh5r0"), ExtResource("15_mn875"), ExtResource("16_5td2g"), ExtResource("17_oq1cs"), ExtResource("18_0ary1"), ExtResource("19_6o3cf"), ExtResource("20_71sok"), ExtResource("21_gdl8j"), ExtResource("22_3ljjt"), ExtResource("23_uwln2")])
+shadows = Array[Texture2D]([ExtResource("3_fay2s"), ExtResource("4_7q84u"), ExtResource("5_vusfk"), ExtResource("6_nbgua"), ExtResource("7_26a0o"), ExtResource("8_imms4"), ExtResource("9_i0m2a"), ExtResource("10_aegv3"), ExtResource("11_xxhcp"), ExtResource("12_nowwt"), ExtResource("13_hj7sg"), ExtResource("14_dmjqs"), ExtResource("15_hdubo"), ExtResource("1_5rmki"), ExtResource("16_2lyps"), ExtResource("17_hulaj"), ExtResource("18_j2bba")])

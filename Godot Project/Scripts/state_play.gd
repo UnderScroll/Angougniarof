@@ -10,6 +10,7 @@ func enter_state():
 	await $AnimationPlayer.animation_finished
 	var crt_mat = $CRTFilter.material
 	crt_mat.set_shader_parameter("static_noise_intensity", 0.0)
+	$Shadow.show()
 	$Shadow.random_shadow()
 	$Shadow.scale = Vector2(0.0,0.0)
 	show()
@@ -27,7 +28,8 @@ func enter_state():
 func exit_state():
 	$Playtime.stop()
 	prepare_screenshot()
-	await get_tree().create_timer(0.1).timeout
+	$Shadow.hide()
+	await get_tree().create_timer(0.5).timeout
 	ask_result.emit() 
 
 # ------------------------------------------------------------------------------ BASIC METHODS
