@@ -3,6 +3,9 @@ class_name GameStateStart
 
 var is_on : bool = true
 
+signal no_games_changed
+signal timer_length_changed
+
 func _ready():
 	enter_state()
 
@@ -25,3 +28,12 @@ func exit_state():
 func _input(event: InputEvent) -> void:
 	if is_on and event is InputEventKey :
 		exit_state()
+
+
+func _on_h_slider_value_changed(value: float) -> void:
+	$ColorRect/VBoxContainer/MC/VB/NoGames/Label2.text = str(value)
+	no_games_changed.emit(value)
+
+func _on_timer_slider_value_changed(value: float) -> void:
+	$ColorRect/VBoxContainer/MC/VB/LengthTimer/Label2.text = str(value) + " seconds"
+	timer_length_changed.emit(value)

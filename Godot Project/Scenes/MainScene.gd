@@ -3,7 +3,7 @@ extends Control
 const Pixelmatch := preload("res://addons/pixelmatch/pixelmatch.gd")
 @export var feed : Window
 
-@export var max_nb_of_games : int = 5
+@export var max_nb_of_games : int = 3
 var nb_game : int = 0
 
 var reference : Image
@@ -64,3 +64,7 @@ func _on_end_score_restart() -> void:
 	last_score = 0
 	total_score = 0
 	$StateHandler.is_end = false
+
+
+func _on_start_screen_no_games_changed(value) -> void:
+	max_nb_of_games = value

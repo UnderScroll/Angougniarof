@@ -87,3 +87,8 @@ func _on_game_reference_ready():
 	
 	$Playtime.start()
 	static_tween_fx()
+
+
+func _on_start_screen_timer_length_changed(value) -> void:
+	$Playtime.wait_time = value
+	pass # Replace with function body.

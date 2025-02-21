@@ -80,6 +80,8 @@ grow_vertical = 2
 [connection signal="end_game" from="." to="StateHandler" method="_on_game_end_game"]
 [connection signal="reference_ready" from="." to="CanvasLayer/Game" method="_on_game_reference_ready"]
 [connection signal="result_ready" from="." to="CanvasLayer/Game" method="_on_game_result_ready"]
+[connection signal="no_games_changed" from="CanvasLayer/StartScreen" to="." method="_on_start_screen_no_games_changed"]
+[connection signal="timer_length_changed" from="CanvasLayer/StartScreen" to="CanvasLayer/Game" method="_on_start_screen_timer_length_changed"]
 [connection signal="ask_reference" from="CanvasLayer/Game" to="." method="_on_game_ask_reference"]
 [connection signal="ask_result" from="CanvasLayer/Game" to="." method="_on_game_ask_result"]
 [connection signal="restart" from="CanvasLayer/EndScore" to="." method="_on_end_score_restart"]
