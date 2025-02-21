@@ -24,7 +24,7 @@ func enter_state():
 	$Shadow.random_shadow()
 	$Shadow.scale = Vector2(0.0,0.0)
 	show()
-	$ShapeAppear.play()
+	%ShapeAppear.play()
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	tween.set_ease(Tween.EASE_OUT)
