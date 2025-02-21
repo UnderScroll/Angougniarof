@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ds4ifo77l40a6"]
+[gd_scene load_steps=27 format=3 uid="uid://ds4ifo77l40a6"]
 
 [ext_resource type="Theme" uid="uid://hs4d4pso4b6f" path="res://Assets/Theme.tres" id="1_vynqb"]
 [ext_resource type="Script" path="res://Scripts/state_play.gd" id="2_alhrt"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="5_y8xl8"]
 [ext_resource type="Texture2D" uid="uid://c452bv3t4kiw5" path="res://Assets/Textures/particle_square.png" id="6_077tx"]
 [ext_resource type="FontFile" uid="uid://goi143bh7m32" path="res://Assets/Fonts/SM.TTF" id="8_gxtk2"]
+[ext_resource type="Texture2D" uid="uid://ccxodmdweqc1u" path="res://Assets/Textures/Rectangle_31.png" id="9_mkovt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jhfbi"]
 shader = ExtResource("3_ngncb")
@@ -593,5 +594,28 @@ vertical_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_4qkim")
 }
+
+[node name="Outline" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -598.0
+offset_top = -349.0
+offset_right = 602.0
+offset_bottom = 351.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_mkovt")
+draw_center = false
+patch_margin_left = 64
+patch_margin_top = 64
+patch_margin_right = 64
+patch_margin_bottom = 64
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [connection signal="timeout" from="Playtime" to="." method="_on_playtime_timeout"]
