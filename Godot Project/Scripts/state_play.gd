@@ -5,6 +5,16 @@ class_name GameStatePlay
 signal ask_reference
 signal ask_result
 
+#@export var audio_nodes : Array[AudioStreamPlayer] = []
+#@export_group("audio nodes")
+#@export var audio_enter : AudioStreamPlayer
+#@export var audio_exit : AudioStreamPlayer
+#@export var audio_ente : AudioStreamPlayer
+#@export var audio_ent : AudioStreamPlayer
+#@export var audio_en : AudioStreamPlayer
+
+var previous_int : int = 0
+
 func enter_state():
 	$AnimationPlayer.play("RESET")
 	await $AnimationPlayer.animation_finished
@@ -14,6 +24,7 @@ func enter_state():
 	$Shadow.random_shadow()
 	$Shadow.scale = Vector2(0.0,0.0)
 	show()
+	$ShapeAppear.play()
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	tween.set_ease(Tween.EASE_OUT)
@@ -23,7 +34,7 @@ func enter_state():
 	prepare_screenshot()
 	await get_tree().create_timer(0.1).timeout
 	ask_reference.emit()
-
+ 
 
 func exit_state():
 	$Playtime.stop()
@@ -35,10 +46,18 @@ func exit_state():
 # ------------------------------------------------------------------------------ BASIC METHODS
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	$TimerUI/icon.value = $Playtime.time_left
-	var s = int($Playtime.time_left)
-	var ms = ($Playtime.time_left - s) * 100
-	$TimerUI/P/MP/TimerLabel.text = "%02d:%02d" % [s, ms]
+	if not $Playtime.is_stopped():
+		$TimerUI/icon.value = $Playtime.time_left
+		var s = int($Playtime.time_left)
+		
+		if previous_int != s :
+			previous_int = s
+			if s % 2 == 0 and s >= 10.0:
+				$TimerTick.play()
+			if s % 2 == 0 and s < 10.0 and s > 0:
+				$TimerTense.play()
+		var ms = ($Playtime.time_left - s) * 100
+		$TimerUI/P/MP/TimerLabel.text = "%02d:%02d" % [s, ms]
 
 # ------------------------------------------------------------------------------ CUSTOM METHODS
 ## Callled right before screenshot
@@ -88,6 +107,9 @@ func _on_game_reference_ready():
 	$Playtime.start()
 	static_tween_fx()
 
+func fade_in_music():
+	var tween = create_tween()
+	tween.tween_method(AudioServer.set_bus_volume_db.bind(1), -80, 0, 2.0)
 
 func _on_start_screen_timer_length_changed(value) -> void:
 	$Playtime.wait_time = value

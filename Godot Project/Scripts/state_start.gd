@@ -13,12 +13,18 @@ func enter_state():
 	show()
 	$AnimationPlayer.play("RESET")
 	await $AnimationPlayer.animation_finished
+	
+	$IntroAudio.play(1.02)
+	
 	$AnimationPlayer.play("open")
 	await $AnimationPlayer.animation_finished
+	$MusicLoop.play()
 	is_on = true
+	
 	
 
 func exit_state():
+	$Clic.play()
 	is_on = false
 	$AnimationPlayer.play("close")
 	await $AnimationPlayer.animation_finished

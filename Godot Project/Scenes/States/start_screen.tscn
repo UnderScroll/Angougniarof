@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://hy3dfkddoggr"]
+[gd_scene load_steps=12 format=3 uid="uid://hy3dfkddoggr"]
 
 [ext_resource type="Theme" uid="uid://hs4d4pso4b6f" path="res://Assets/Theme.tres" id="1_ajovm"]
 [ext_resource type="Script" path="res://Scripts/state_start.gd" id="2_q5ism"]
+[ext_resource type="AudioStream" uid="uid://ces8k1p2lu1i3" path="res://Assets/AudioAssets/MUS/MUS_BeginMenuMusic.wav" id="3_ipndq"]
+[ext_resource type="AudioStream" uid="uid://bv1eip3md75dj" path="res://Assets/AudioAssets/MUS/MUS_MainLoop_MenuMusic.wav" id="4_psi72"]
+[ext_resource type="AudioStream" uid="uid://35c22l0o4rwy" path="res://Assets/AudioAssets/SFX/SFX_OnClickButton_Menu.wav" id="5_ilnm7"]
 
 [sub_resource type="Gradient" id="Gradient_8j4wn"]
 interpolation_mode = 2
@@ -37,6 +40,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MusicLoop:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_xl2gb"]
 resource_name = "close"
@@ -51,6 +66,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-1920, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MusicLoop:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [0.0, -80.0]
 }
 
 [sub_resource type="Animation" id="Animation_x5w8p"]
@@ -177,6 +204,15 @@ text = "0"
 libraries = {
 "": SubResource("AnimationLibrary_7m0bd")
 }
+
+[node name="IntroAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ipndq")
+
+[node name="MusicLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_psi72")
+
+[node name="Clic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ilnm7")
 
 [connection signal="value_changed" from="ColorRect/VBoxContainer/MC/VB/NoGames/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="ColorRect/VBoxContainer/MC/VB/LengthTimer/TimerSlider" to="." method="_on_timer_slider_value_changed"]

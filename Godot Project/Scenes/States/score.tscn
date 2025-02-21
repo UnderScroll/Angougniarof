@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://dondth6ferakg"]
+[gd_scene load_steps=21 format=3 uid="uid://dondth6ferakg"]
 
 [ext_resource type="Theme" uid="uid://hs4d4pso4b6f" path="res://Assets/Theme.tres" id="1_nki2o"]
 [ext_resource type="Script" path="res://Scripts/state_score.gd" id="2_oopo1"]
+[ext_resource type="AudioStream" uid="uid://030u2c7iem86" path="res://Assets/AudioAssets/SFX/SFX_ScoreTick_Input.wav" id="3_cp1f3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ryii"]
 bg_color = Color(0.8125, 0.8125, 0.8125, 0)
@@ -207,4 +208,9 @@ libraries = {
 wait_time = 10.0
 one_shot = true
 
+[node name="Tick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_cp1f3")
+volume_db = -3.0
+
+[connection signal="value_changed" from="ProgressBar" to="." method="_on_progress_bar_value_changed"]
 [connection signal="timeout" from="EndScoreReveal" to="." method="_on_end_score_reveal_timeout"]

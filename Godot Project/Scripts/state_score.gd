@@ -5,6 +5,7 @@ class_name GameStateScore
 @export var score_label : Label
 ## goes from 0% to 100% -> match between the prompt and the shadow
 var score : float = 0.0
+var previous_int : int = 0
 
 func enter_state():
 	$Fizzle.restart()
@@ -23,6 +24,7 @@ func exit_state():
 
 func reveal():
 	$Fizzle.emitting = true
+	
 	$MarginContainer/VBoxContainer/Fizzle2.emitting = true
 	
 	var tween = create_tween().set_trans(Tween.TRANS_CIRC)
@@ -44,3 +46,9 @@ func end_reveal():
 
 func _on_end_score_reveal_timeout():
 	change_state_to(StateHandler.States.PLAY)
+
+func _on_progress_bar_value_changed(value: float) -> void:
+	var new_int = int(value)
+	if new_int != previous_int:
+		$Tick.play()
+		previous_int = new_int
