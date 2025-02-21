@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://bxlvoq5fhkohi" path="res://Assets/AudioAssets/SFX/SFX_Game_FormAppear.wav" id="11_2gyw7"]
 [ext_resource type="AudioStream" uid="uid://cfuk81m7qngsq" path="res://Assets/AudioAssets/SFX/SFX_Timer_Begin.wav" id="12_4tyoh"]
 [ext_resource type="AudioStream" uid="uid://chiguxotdlqnj" path="res://Assets/AudioAssets/SFX/SFX_Timer_LastTenSec.wav" id="13_jjhgo"]
-[ext_resource type="AudioStream" uid="uid://b7yw7cm4mhxwb" path="res://Assets/AudioAssets/MUS/GameplayMockup2.wav" id="14_j4xae"]
+[ext_resource type="AudioStream" uid="uid://vcafeqwphu30" path="res://Assets/AudioAssets/MUS/MUS_MainLoop_Gameplay.wav" id="14_t8ved"]
 [ext_resource type="AudioStream" uid="uid://doi71nv706i0f" path="res://Assets/AudioAssets/SFX/SFX_EndRound_EndTimerTwoSeconds.wav" id="15_4hcce"]
 [ext_resource type="AudioStream" uid="uid://du0bk1drin484" path="res://Assets/AudioAssets/SFX/SFX_BubblesAppears.wav" id="16_mmxxc"]
 
@@ -724,7 +724,7 @@ stream = ExtResource("12_4tyoh")
 stream = ExtResource("13_jjhgo")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_j4xae")
+stream = ExtResource("14_t8ved")
 bus = &"Music"
 
 [node name="EndAudio" type="AudioStreamPlayer" parent="."]

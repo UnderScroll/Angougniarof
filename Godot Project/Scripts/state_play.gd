@@ -24,7 +24,7 @@ func enter_state():
 	$Shadow.random_shadow()
 	$Shadow.scale = Vector2(0.0,0.0)
 	show()
-	%ShapeAppear.play()
+	$ShapeAppear.play()
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	tween.set_ease(Tween.EASE_OUT)
@@ -109,8 +109,16 @@ func _on_game_reference_ready():
 
 func fade_in_music():
 	var tween = create_tween()
-	tween.tween_method(AudioServer.set_bus_volume_db.bind(1), -80, 0, 2.0)
+	tween.tween_property($BGM, "volume_db", 0, 2)
+
+func fade_out_music():
+	var tween = create_tween()
+	tween.tween_property($BGM, "volume_db", -80, 2)
+	tween.tween_callback($BGM.stop)
 
 func _on_start_screen_timer_length_changed(value) -> void:
 	$Playtime.wait_time = value
 	pass # Replace with function body.
+
+func _on_end_score_restart() -> void:
+	fade_out_music()

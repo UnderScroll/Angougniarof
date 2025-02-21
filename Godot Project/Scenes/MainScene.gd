@@ -60,15 +60,11 @@ func _on_game_ask_reference():
 	get_reference()
 
 func _on_end_score_restart() -> void:
-	fade_music()
 	nb_game = 0
 	last_score = 0
 	total_score = 0
 	$StateHandler.is_end = false
 
-func fade_music():
-	var tween = create_tween()
-	tween.tween_method(AudioServer.set_bus_volume_db.bind(1), 0, -80, 2.0)
 
 func _on_start_screen_no_games_changed(value) -> void:
 	max_nb_of_games = value
