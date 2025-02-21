@@ -21,7 +21,7 @@ func get_reference():
 	reference_ready.emit()
 
 func compare_feed_picture():
-	var img2 = get_viewport().get_texture().get_image()
+	var img2 = feed.get_viewport().get_texture().get_image()
 	img2.resize(reference.get_width(), reference.get_height())
 	
 	var i1 = ImageTexture.create_from_image(reference)
@@ -43,7 +43,6 @@ func on_game_done(score : float) -> void:
 
 func _on_game_ask_result() -> void:
 	compare_feed_picture()
-
 
 func _on_game_ask_reference():
 	get_reference()

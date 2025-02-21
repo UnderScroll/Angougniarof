@@ -62,7 +62,7 @@ func static_tween_fx():
 	crt_mat.set_shader_parameter("static_noise_intensity", 0.0)
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_IN)
-	tween.tween_property(crt_mat,"shader_parameter/static_noise_intensity", 0.4, $Playtime.wait_time)
+	tween.tween_property(crt_mat,"shader_parameter/static_noise_intensity", 1.0, $Playtime.wait_time)
 
 # ------------------------------------------------------------------------------ SIGNALS
 func _on_playtime_timeout() -> void:
