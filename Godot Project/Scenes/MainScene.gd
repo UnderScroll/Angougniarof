@@ -29,7 +29,7 @@ func compare_feed_picture():
 	$ScoreManager.set_tex1(i1)
 	$ScoreManager.set_tex2(i2)
 	
-	var res_f : float = (1.0 - $ScoreManager.ManageCShader()) * 100
+	var res_f : float = ($ScoreManager.ManageCShader()) * 100
 	on_game_done(res_f)
 
 func on_game_done(score : float) -> void:
