@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://ds4ifo77l40a6"]
+[gd_scene load_steps=41 format=3 uid="uid://ds4ifo77l40a6"]
 
 [ext_resource type="Theme" uid="uid://hs4d4pso4b6f" path="res://Assets/Theme.tres" id="1_vynqb"]
 [ext_resource type="Script" path="res://Scripts/state_play.gd" id="2_alhrt"]
@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://yqduqhi760t2" path="res://Assets/AudioAssets/AMB/AMB_Gameplay_LP-02.wav" id="19_dtutp"]
 [ext_resource type="AudioStream" uid="uid://yb86yupyxy8g" path="res://Assets/AudioAssets/AMB/AMB_Gameplay_LP-03.wav" id="20_gtx5u"]
 [ext_resource type="AudioStream" uid="uid://daxu8f4rp1bmo" path="res://Assets/AudioAssets/AMB/AMB_Gameplay_LP-04.wav" id="21_b72sh"]
+[ext_resource type="AudioStream" uid="uid://gd0dbtysb73f" path="res://Assets/AudioAssets/SFX/SFX_Voice_TimesUp.wav" id="22_igh58"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jhfbi"]
 shader = ExtResource("3_ngncb")
@@ -731,9 +732,11 @@ stream = ExtResource("11_2gyw7")
 
 [node name="TimerTick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_4tyoh")
+volume_db = 2.0
 
 [node name="TimerTense" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_jjhgo")
+volume_db = 3.0
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_t8ved")
@@ -753,5 +756,10 @@ pitch_scale = 1.1
 [node name="AudioGameAmb_Random" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_7yf4b")
 volume_db = -4.0
+
+[node name="TimesUpVoice" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_igh58")
+volume_db = 3.0
+mix_target = 2
 
 [connection signal="timeout" from="Playtime" to="." method="_on_playtime_timeout"]

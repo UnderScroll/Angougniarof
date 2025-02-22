@@ -47,6 +47,7 @@ func update_results():
 
 func end_result():
 	var loops = scores.size()
+	@warning_ignore("integer_division")
 	var median_score = endscore / loops
 	
 	if median_score < 50:
@@ -55,6 +56,6 @@ func end_result():
 	if median_score < 100:
 		$MC/VB/Conclusion.text = "RESULT : HUMAN"
 		return
-	
+	$EndGameSFX.play()
 	$MC/VB/Conclusion.text = "RESULT : ALIEN"
 	

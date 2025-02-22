@@ -45,6 +45,7 @@ func update_counter(new_exp : int, label : Label):
 func end_reveal():
 	$MarginContainer/VBoxContainer/Fizzle2.emitting = false
 	$EndScoreReveal.start()
+	$BubblesSFX.play()
 	fade_out_amb()
 
 func _on_end_score_reveal_timeout():

@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://hy3dfkddoggr"]
+[gd_scene load_steps=13 format=3 uid="uid://hy3dfkddoggr"]
 
 [ext_resource type="Theme" uid="uid://hs4d4pso4b6f" path="res://Assets/Theme.tres" id="1_ajovm"]
 [ext_resource type="Script" path="res://Scripts/state_start.gd" id="2_q5ism"]
 [ext_resource type="AudioStream" uid="uid://ces8k1p2lu1i3" path="res://Assets/AudioAssets/MUS/MUS_BeginMenuMusic.wav" id="3_ipndq"]
 [ext_resource type="AudioStream" uid="uid://bv1eip3md75dj" path="res://Assets/AudioAssets/MUS/MUS_MainLoop_MenuMusic.wav" id="4_psi72"]
 [ext_resource type="AudioStream" uid="uid://35c22l0o4rwy" path="res://Assets/AudioAssets/SFX/SFX_OnClickButton_Menu.wav" id="5_ilnm7"]
+[ext_resource type="AudioStream" uid="uid://dwq8nve1pv2t5" path="res://Assets/AudioAssets/AMB/AMB_Menu_LP.wav" id="6_xsu1w"]
 
 [sub_resource type="Gradient" id="Gradient_8j4wn"]
 interpolation_mode = 2
@@ -213,6 +214,10 @@ stream = ExtResource("4_psi72")
 
 [node name="Clic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ilnm7")
+
+[node name="AmbBG" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_xsu1w")
+volume_db = -3.0
 
 [connection signal="value_changed" from="ColorRect/VBoxContainer/MC/VB/NoGames/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="ColorRect/VBoxContainer/MC/VB/LengthTimer/TimerSlider" to="." method="_on_timer_slider_value_changed"]

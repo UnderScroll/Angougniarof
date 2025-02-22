@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ex24t4sj3dhy"]
+[gd_scene load_steps=6 format=3 uid="uid://ex24t4sj3dhy"]
 
 [ext_resource type="FontFile" uid="uid://goi143bh7m32" path="res://Assets/Fonts/SM.TTF" id="1_6owju"]
 [ext_resource type="PackedScene" uid="uid://bup2gnc5s1u3j" path="res://Scenes/loop_result.tscn" id="2_na15f"]
 [ext_resource type="Script" path="res://Scripts/state_endscore.gd" id="2_oy3fd"]
+[ext_resource type="AudioStream" uid="uid://bu6uuhr1tgoq" path="res://Assets/AudioAssets/SFX/SFX__EndGame_RestartGame_OS.wav" id="4_56q7y"]
 
 [sub_resource type="Theme" id="Theme_wvbbm"]
 Label/constants/outline_size = 32
@@ -98,3 +99,9 @@ horizontal_alignment = 1
 modulate = Color(1, 0.290196, 1, 1)
 layout_mode = 2
 text = "RESULT : AI / HUMAN / ALIEN"
+
+[node name="EndGameSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_56q7y")
+volume_db = 14.0
+pitch_scale = 1.05
+mix_target = 2

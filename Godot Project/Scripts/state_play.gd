@@ -60,6 +60,8 @@ func _process(_delta: float) -> void:
 				$TimerTick.play()
 			if s % 2 == 0 and s < 10.0 and s > 0:
 				$TimerTense.play()
+			if s == 2:
+				$EndAudio.play()
 		var ms = ($Playtime.time_left - s) * 100
 		$TimerUI/P/MP/TimerLabel.text = "%02d:%02d" % [s, ms]
 
@@ -99,6 +101,7 @@ func _on_wait_screen_ask_result() -> void:
 
 func _on_game_result_ready() -> void:
 	$AnimationPlayer.play("time_up")
+	$TimesUpVoice.play()
 	await $AnimationPlayer.animation_finished
 	change_state_to(StateHandler.States.WAIT)
 
@@ -107,7 +110,6 @@ func _on_game_reference_ready():
 	$AnimationPlayer.play("open")
 	await $AnimationPlayer.animation_finished
 	$TimerUI/icon.max_value = $Playtime.wait_time
-	
 	$Playtime.start()
 	static_tween_fx()
 
