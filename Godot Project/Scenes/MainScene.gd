@@ -35,7 +35,7 @@ func compare_feed_picture():
 	print("---------------")
 	var res_f : float = (1.0-$ScoreManager.ManageCShader()) # value between 0.8 and 1.0
 	print(res_f)
-	res_f = clamp(res_f - 0.8, 0.0,0.19) # value between 0.0 and 0.2
+	res_f = clamp(res_f - 0.75, 0.0,0.19) # value between 0.0 and 0.2
 	print(res_f)
 	res_f = (res_f * 100) / 0.19 # value betwwen 0 and 100 !
 	print(res_f)

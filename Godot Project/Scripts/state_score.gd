@@ -26,6 +26,7 @@ func exit_state():
 
 func reveal():
 	$Fizzle.emitting = true
+	$Tick.pitch_scale = 0.5
 	$AudioAmbBackground.play()
 	$MarginContainer/VBoxContainer/Fizzle2.emitting = true
 	
@@ -36,6 +37,8 @@ func reveal():
 	tween.tween_property($ProgressBar, "value", score, reveal_duration)
 	tween.set_parallel()
 	tween.tween_property($MarginContainer/VBoxContainer/Fizzle2, "amount_ratio", 1, reveal_duration)
+	tween.set_parallel()
+	tween.tween_property($Tick, "pitch_scale", 1.5, reveal_duration)
 	await tween.finished
 	end_reveal()
 

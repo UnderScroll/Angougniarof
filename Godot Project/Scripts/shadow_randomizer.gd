@@ -5,7 +5,7 @@ extends TextureRect
 
 func random_shadow():
 	shadows.shuffle()
-	texture = shadows[0]
+	texture = shadows[randi_range(0, shadows.size()-1)]
 	
 	# scaler helper
 	pivot_offset = Vector2(

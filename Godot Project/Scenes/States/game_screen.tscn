@@ -624,7 +624,7 @@ stream_1/stream = ExtResource("19_dtutp")
 stream_2/stream = ExtResource("20_gtx5u")
 stream_3/stream = ExtResource("21_b72sh")
 
-[node name="Game" type="Control"]
+[node name="Game2" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

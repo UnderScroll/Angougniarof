@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bsci1as1f70pf"]
+[gd_scene load_steps=13 format=3 uid="uid://bsci1as1f70pf"]
 
 [ext_resource type="Texture2D" uid="uid://bck2a0uw2mhwv" path="res://Assets/Shadows/Vector 16.png" id="1_5rmki"]
 [ext_resource type="Script" path="res://Scripts/shadow_randomizer.gd" id="2_5vk5y"]
@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://cgjd07k0wlabu" path="res://Assets/Shadows/Group 11.png" id="7_26a0o"]
 [ext_resource type="Texture2D" uid="uid://b5da03os8wm8n" path="res://Assets/Shadows/Group 12.png" id="8_imms4"]
 [ext_resource type="Texture2D" uid="uid://qq2sfsqhytvq" path="res://Assets/Shadows/Group 13.png" id="9_i0m2a"]
+[ext_resource type="Texture2D" uid="uid://f8an4ekfkcuc" path="res://Assets/Shadows/Shadow_BadApple.png" id="11_v4dgl"]
 [ext_resource type="Texture2D" uid="uid://c837bwqk0k8pq" path="res://Assets/Shadows/Vector 8.png" id="11_xxhcp"]
+[ext_resource type="Texture2D" uid="uid://dtb1jl6u4k4r0" path="res://Assets/Shadows/Shadow_RickRoll.png" id="12_2bqey"]
 [ext_resource type="Texture2D" uid="uid://cd3kgke5dfnnj" path="res://Assets/Shadows/Vector 9.png" id="12_nowwt"]
 
 [node name="Shadow" type="TextureRect"]
@@ -26,6 +28,7 @@ offset_right = 310.5
 offset_bottom = 340.5
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_5rmki")
 stretch_mode = 5
 script = ExtResource("2_5vk5y")
-shadows = Array[Texture2D]([ExtResource("3_fay2s"), ExtResource("4_7q84u"), ExtResource("6_nbgua"), ExtResource("7_26a0o"), ExtResource("8_imms4"), ExtResource("9_i0m2a"), ExtResource("11_xxhcp"), ExtResource("12_nowwt"), ExtResource("1_5rmki")])
+shadows = Array[Texture2D]([ExtResource("3_fay2s"), ExtResource("4_7q84u"), ExtResource("6_nbgua"), ExtResource("7_26a0o"), ExtResource("8_imms4"), ExtResource("9_i0m2a"), ExtResource("11_xxhcp"), ExtResource("12_nowwt"), ExtResource("1_5rmki"), ExtResource("11_v4dgl"), ExtResource("12_2bqey")])
