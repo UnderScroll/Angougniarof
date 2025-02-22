@@ -20,11 +20,14 @@ func enter_state():
 	await $AnimationPlayer.animation_finished
 	var crt_mat = $CRTFilter.material
 	crt_mat.set_shader_parameter("static_noise_intensity", 0.0)
+	$SFX_CRT.play()
 	$Shadow.show()
 	$Shadow.random_shadow()
 	$Shadow.scale = Vector2(0.0,0.0)
 	show()
 	$ShapeAppear.play()
+	fade_in_ambGame()
+	$AudioGameAmb_Random.play()
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	tween.set_ease(Tween.EASE_OUT)
@@ -40,6 +43,7 @@ func exit_state():
 	$Playtime.stop()
 	prepare_screenshot()
 	$Shadow.hide()
+	fade_out_ambGame()
 	await get_tree().create_timer(0.5).timeout
 	ask_result.emit() 
 
@@ -107,13 +111,22 @@ func _on_game_reference_ready():
 	$Playtime.start()
 	static_tween_fx()
 
+func fade_in_ambGame():
+	var tween = create_tween()
+	tween.tween_property($AudioGameAmb_Random, "volume_db", 0, 0.5)
+	
+func fade_out_ambGame():
+	var tween = create_tween()
+	tween.tween_property($AudioGameAmb_Random, "volume_db", -80, 0.8)
+	tween.tween_callback($AudioGameAmb_Random.stop)
+
 func fade_in_music():
 	var tween = create_tween()
-	tween.tween_property($BGM, "volume_db", 0, 2)
+	tween.tween_property($BGM, "volume_db", 0, 1)
 
 func fade_out_music():
 	var tween = create_tween()
-	tween.tween_property($BGM, "volume_db", -80, 2)
+	tween.tween_property($BGM, "volume_db", -80, 1)
 	tween.tween_callback($BGM.stop)
 
 func _on_start_screen_timer_length_changed(value) -> void:

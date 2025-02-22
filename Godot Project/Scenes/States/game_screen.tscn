@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ds4ifo77l40a6"]
+[gd_scene load_steps=40 format=3 uid="uid://ds4ifo77l40a6"]
 
 [ext_resource type="Theme" uid="uid://hs4d4pso4b6f" path="res://Assets/Theme.tres" id="1_vynqb"]
 [ext_resource type="Script" path="res://Scripts/state_play.gd" id="2_alhrt"]
@@ -16,6 +16,11 @@
 [ext_resource type="AudioStream" uid="uid://vcafeqwphu30" path="res://Assets/AudioAssets/MUS/MUS_MainLoop_Gameplay.wav" id="14_t8ved"]
 [ext_resource type="AudioStream" uid="uid://doi71nv706i0f" path="res://Assets/AudioAssets/SFX/SFX_EndRound_EndTimerTwoSeconds.wav" id="15_4hcce"]
 [ext_resource type="AudioStream" uid="uid://du0bk1drin484" path="res://Assets/AudioAssets/SFX/SFX_BubblesAppears.wav" id="16_mmxxc"]
+[ext_resource type="AudioStream" uid="uid://c17m5koeggf7a" path="res://Assets/AudioAssets/SFX/SFX_BeginGame_CRTfx_OS.wav" id="17_ow7pb"]
+[ext_resource type="AudioStream" uid="uid://cgo4lc2c68inb" path="res://Assets/AudioAssets/AMB/AMB_Gameplay_LP-01.wav" id="18_adh36"]
+[ext_resource type="AudioStream" uid="uid://yqduqhi760t2" path="res://Assets/AudioAssets/AMB/AMB_Gameplay_LP-02.wav" id="19_dtutp"]
+[ext_resource type="AudioStream" uid="uid://yb86yupyxy8g" path="res://Assets/AudioAssets/AMB/AMB_Gameplay_LP-03.wav" id="20_gtx5u"]
+[ext_resource type="AudioStream" uid="uid://daxu8f4rp1bmo" path="res://Assets/AudioAssets/AMB/AMB_Gameplay_LP-04.wav" id="21_b72sh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jhfbi"]
 shader = ExtResource("3_ngncb")
@@ -508,6 +513,13 @@ _data = {
 "time_up": SubResource("Animation_spn8n")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7yf4b"]
+streams_count = 4
+stream_0/stream = ExtResource("18_adh36")
+stream_1/stream = ExtResource("19_dtutp")
+stream_2/stream = ExtResource("20_gtx5u")
+stream_3/stream = ExtResource("21_b72sh")
+
 [node name="Game" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -732,5 +744,14 @@ stream = ExtResource("15_4hcce")
 
 [node name="Bubble" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_mmxxc")
+
+[node name="SFX_CRT" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_ow7pb")
+volume_db = 6.0
+pitch_scale = 1.1
+
+[node name="AudioGameAmb_Random" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_7yf4b")
+volume_db = -4.0
 
 [connection signal="timeout" from="Playtime" to="." method="_on_playtime_timeout"]
