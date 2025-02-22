@@ -52,10 +52,13 @@ func end_result():
 	
 	if median_score < 50:
 		$MC/VB/Conclusion.text = "RESULT : AI"
+		$RobotResult.play()
 		return
 	if median_score < 100:
 		$MC/VB/Conclusion.text = "RESULT : HUMAN"
+		$HumanResult.play()
 		return
+	$AlienResult.play()
 	$EndGameSFX.play()
 	$MC/VB/Conclusion.text = "RESULT : ALIEN"
 	

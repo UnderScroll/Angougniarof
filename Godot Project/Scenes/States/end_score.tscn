@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://ex24t4sj3dhy"]
+[gd_scene load_steps=9 format=3 uid="uid://ex24t4sj3dhy"]
 
 [ext_resource type="FontFile" uid="uid://goi143bh7m32" path="res://Assets/Fonts/SM.TTF" id="1_6owju"]
 [ext_resource type="PackedScene" uid="uid://bup2gnc5s1u3j" path="res://Scenes/loop_result.tscn" id="2_na15f"]
 [ext_resource type="Script" path="res://Scripts/state_endscore.gd" id="2_oy3fd"]
 [ext_resource type="AudioStream" uid="uid://bu6uuhr1tgoq" path="res://Assets/AudioAssets/SFX/SFX__EndGame_RestartGame_OS.wav" id="4_56q7y"]
+[ext_resource type="AudioStream" uid="uid://crq2tvrqkukea" path="res://Assets/AudioAssets/SFX/SFX_IfRobot.wav" id="5_q74be"]
+[ext_resource type="AudioStream" uid="uid://b36qhxl77oi4l" path="res://Assets/AudioAssets/SFX/SFX_IfHuman.wav" id="6_4jyjw"]
+[ext_resource type="AudioStream" uid="uid://b2pcawlo3edgt" path="res://Assets/AudioAssets/SFX/SFX_IfAlien.wav" id="7_13uri"]
 
 [sub_resource type="Theme" id="Theme_wvbbm"]
 Label/constants/outline_size = 32
@@ -105,3 +108,12 @@ stream = ExtResource("4_56q7y")
 volume_db = 14.0
 pitch_scale = 1.05
 mix_target = 2
+
+[node name="RobotResult" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_q74be")
+
+[node name="HumanResult" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4jyjw")
+
+[node name="AlienResult" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_13uri")

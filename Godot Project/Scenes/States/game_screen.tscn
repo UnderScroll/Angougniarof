@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://ds4ifo77l40a6"]
+[gd_scene load_steps=48 format=3 uid="uid://ds4ifo77l40a6"]
 
 [ext_resource type="Theme" uid="uid://hs4d4pso4b6f" path="res://Assets/Theme.tres" id="1_vynqb"]
 [ext_resource type="Script" path="res://Scripts/state_play.gd" id="2_alhrt"]
@@ -22,6 +22,13 @@
 [ext_resource type="AudioStream" uid="uid://yb86yupyxy8g" path="res://Assets/AudioAssets/AMB/AMB_Gameplay_LP-03.wav" id="20_gtx5u"]
 [ext_resource type="AudioStream" uid="uid://daxu8f4rp1bmo" path="res://Assets/AudioAssets/AMB/AMB_Gameplay_LP-04.wav" id="21_b72sh"]
 [ext_resource type="AudioStream" uid="uid://gd0dbtysb73f" path="res://Assets/AudioAssets/SFX/SFX_Voice_TimesUp.wav" id="22_igh58"]
+[ext_resource type="AudioStream" uid="uid://crq2tvrqkukea" path="res://Assets/AudioAssets/SFX/SFX_IfRobot.wav" id="23_ggy1q"]
+[ext_resource type="AudioStream" uid="uid://b2pcawlo3edgt" path="res://Assets/AudioAssets/SFX/SFX_IfAlien.wav" id="23_qps30"]
+[ext_resource type="AudioStream" uid="uid://b36qhxl77oi4l" path="res://Assets/AudioAssets/SFX/SFX_IfHuman.wav" id="23_x6v8r"]
+[ext_resource type="AudioStream" uid="uid://bue3hxlruod2o" path="res://Assets/AudioAssets/SFX/SFX_Voice_countdown-three.wav" id="26_jj0qq"]
+[ext_resource type="AudioStream" uid="uid://dostq4drgksnk" path="res://Assets/AudioAssets/SFX/SFX_Voice_countdown-two.wav" id="27_bkt4t"]
+[ext_resource type="AudioStream" uid="uid://cemisa2t15lj4" path="res://Assets/AudioAssets/SFX/SFX_Voice_countdown-one.wav" id="28_vemff"]
+[ext_resource type="AudioStream" uid="uid://boau8k4ca3xqx" path="res://Assets/AudioAssets/SFX/SFX_Countdown_GO.wav" id="29_v6r83"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jhfbi"]
 shader = ExtResource("3_ngncb")
@@ -313,6 +320,54 @@ tracks/13/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("StartGo:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Three:playing")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Two:playing")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("One:playing")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_jjyx1"]
 resource_name = "open"
@@ -453,6 +508,54 @@ tracks/10/keys = {
 "args": [],
 "method": &"fade_in_music"
 }]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("StartGo:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Three:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(2.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Two:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(3.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("One:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_spn8n"]
@@ -761,5 +864,26 @@ volume_db = -4.0
 stream = ExtResource("22_igh58")
 volume_db = 3.0
 mix_target = 2
+
+[node name="AlienResult" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_qps30")
+
+[node name="HumanResult" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_x6v8r")
+
+[node name="RobotResult" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_ggy1q")
+
+[node name="Three" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_jj0qq")
+
+[node name="Two" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_bkt4t")
+
+[node name="One" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_vemff")
+
+[node name="StartGo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_v6r83")
 
 [connection signal="timeout" from="Playtime" to="." method="_on_playtime_timeout"]
